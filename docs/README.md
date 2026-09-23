@@ -2,6 +2,7 @@
 
 优先阅读当前材料：
 
+- [v072 验证问题、对照与启动前检查（英文）](VALIDATION_V072.md)
 - [实验前模型决策](MODEL_DECISION_20260923.md)
 - [跨任务 v072 计划与 token 预算](MULTIDOMAIN_V072_EXPERIMENT_PLAN_20260923.md)
 - [三档模型选择与相关研究](THREE_TIER_RESEARCH_SELECTION_V071.md)
