@@ -1,0 +1,229 @@
+{
+  "models": {
+    "local": {
+      "kind": "local",
+      "path": "/root/.cache/huggingface/hub/models--Qwen--Qwen2.5-7B-Instruct-AWQ/snapshots/b25037543e9394b818fdfca67ab2a00ecc7dd641",
+      "noncheap": false,
+      "max_context_tokens": 8192,
+      "call_timeout_seconds": 180,
+      "accounting_usd_per_gpu_hour": 0.0,
+      "rate_basis": "User-confirmed 2026-09-21: exclude GPU rental/hardware/electricity from monetary objective; report measured local inference seconds separately. Zero API spend is not zero resource use."
+    },
+    "strong": {
+      "kind": "api",
+      "provider": "deepseek",
+      "model": "deepseek-flash",
+      "accepted_response_models": [
+        "deepseek-flash",
+        "deepseek-v4.1-flash"
+      ],
+      "documented_model_version": "DeepSeek-V4.1-Flash as of 2026-09-20; alias is provider-managed, no immutable snapshot promised",
+      "endpoint": "https://api.deepseek.com/chat/completions",
+      "key_environment": "DEEPSEEK_API_KEY",
+      "noncheap": true,
+      "max_context_tokens": 32768,
+      "call_timeout_seconds": 120,
+      "supports_seed": false,
+      "thinking": "disabled",
+      "reasoning_effort": "high",
+      "pricing": {
+        "utc_peak_offpeak": true,
+        "source": "https://api-docs.deepseek.com/quick_start/pricing/",
+        "retrieved_date": "2026-09-21",
+        "peak": {
+          "input_per_million_usd": 0.3,
+          "cached_input_per_million_usd": 0.006,
+          "output_per_million_usd": 1.2
+        },
+        "off_peak": {
+          "input_per_million_usd": 0.15,
+          "cached_input_per_million_usd": 0.003,
+          "output_per_million_usd": 0.6
+        }
+      }
+    }
+  },
+  "credentials_file": "/root/.config/nicheflow/credentials.env",
+  "decode": {
+    "seed": 73129,
+    "temperature": 0.7,
+    "top_p": 0.8,
+    "max_new_tokens": 2048
+  },
+  "allowed_operators": [
+    "Generate",
+    "Format",
+    "Review&Revise",
+    "Ensemble",
+    "Identity",
+    "Join"
+  ],
+  "workflow_output_policy": "preserve_boxed_v1",
+  "length_limit_outcome": "zero_quality_no_retry",
+  "cost_objective": "external_api_spend",
+  "schema": "fixed_validation_v060",
+  "experiment_id": "four_fixed_workflows_140x2",
+  "synthetic": false,
+  "data": "data/fixed_validation_v060/validation.jsonl",
+  "data_sha256": "a032c525b698df8f17317d044be2ab94374774724abef4c3273822c47f112fe3",
+  "manifest": "data/fixed_validation_v060/manifest.json",
+  "manifest_sha256": "02e571a73c6c58b805c3a10ae01b217d39fe7ab83e4ba225a12950ec98c37fd8",
+  "groups": {
+    "A_flash_original": {
+      "nodes": [
+        {
+          "id": "a",
+          "operator": "Generate",
+          "prompt": "Solve the supplied task. Follow its output_contract exactly. Return your final answer clearly.",
+          "inputs": [],
+          "model": "strong",
+          "temperature": null,
+          "source": null,
+          "signature": null,
+          "subgroup": null
+        }
+      ],
+      "output": "a",
+      "parents": [],
+      "topology_primitive": null
+    },
+    "B_flash_concise": {
+      "nodes": [
+        {
+          "id": "a",
+          "operator": "Generate",
+          "prompt": "Solve the supplied task. Follow its output_contract exactly. Return your final answer clearly. Use concise but sufficient reasoning. Avoid restating the problem, lengthy introductions, repeated calculations, and unnecessary alternative solutions. Prioritize reaching and checking the exact final answer within the output budget. Put the final answer in the required format.",
+          "inputs": [],
+          "model": "strong",
+          "temperature": null,
+          "source": null,
+          "signature": null,
+          "subgroup": null
+        }
+      ],
+      "output": "a",
+      "parents": [],
+      "topology_primitive": null
+    },
+    "C_best_with_qwen": {
+      "nodes": [
+        {
+          "id": "a",
+          "operator": "Generate",
+          "prompt": "Produce a concise plan for solving the supplied task, including key steps and considerations. Do not solve the task. Return only the plan.",
+          "inputs": [],
+          "model": "strong",
+          "temperature": 0.7,
+          "source": null,
+          "signature": null,
+          "subgroup": null
+        },
+        {
+          "id": "review",
+          "operator": "Review&Revise",
+          "prompt": "Review the plan and suggest improvements for clarity, completeness, and feasibility. Return the improved plan only.",
+          "inputs": [
+            "a"
+          ],
+          "model": "local",
+          "temperature": 0.3,
+          "source": null,
+          "signature": null,
+          "subgroup": null
+        },
+        {
+          "id": "final",
+          "operator": "Generate",
+          "prompt": "Using the improved plan, solve the supplied task. Follow the output contract exactly. Return only the final answer.",
+          "inputs": [
+            "review"
+          ],
+          "model": "strong",
+          "temperature": 0.5,
+          "source": null,
+          "signature": null,
+          "subgroup": null
+        }
+      ],
+      "output": "final",
+      "parents": [
+        "834309f9aeae2e0b4cf59fd84a34fa0a4c0ae63d8979970c2eaf8d3700c97604"
+      ],
+      "topology_primitive": null
+    },
+    "D_without_qwen": {
+      "nodes": [
+        {
+          "id": "a",
+          "operator": "Generate",
+          "prompt": "Produce a concise plan for solving the supplied task, including key steps and considerations. Do not solve the task. Return only the plan.",
+          "inputs": [],
+          "model": "strong",
+          "temperature": 0.7,
+          "source": null,
+          "signature": null,
+          "subgroup": null
+        },
+        {
+          "id": "final",
+          "operator": "Generate",
+          "prompt": "Using the improved plan, solve the supplied task. Follow the output contract exactly. Return only the final answer.",
+          "inputs": [
+            "a"
+          ],
+          "model": "strong",
+          "temperature": 0.5,
+          "source": null,
+          "signature": null,
+          "subgroup": null
+        }
+      ],
+      "output": "final",
+      "parents": [
+        "6e8752093f669ff4ab416e3dc3e58a439ec5316be984de17206dcd4f96eecbc9"
+      ],
+      "topology_primitive": null
+    }
+  },
+  "samples_per_task": 2,
+  "planning_seed": 2026092206,
+  "max_api_usd": 10.0,
+  "max_seconds": 28800,
+  "concurrency": {
+    "workflow_workers": 8,
+    "api_calls": 4,
+    "local_calls": 1
+  },
+  "primary_contrasts": [
+    [
+      "B_flash_concise",
+      "A_flash_original"
+    ],
+    [
+      "C_best_with_qwen",
+      "A_flash_original"
+    ],
+    [
+      "C_best_with_qwen",
+      "B_flash_concise"
+    ],
+    [
+      "C_best_with_qwen",
+      "D_without_qwen"
+    ]
+  ],
+  "source_training": {
+    "directory": "/root/autodl-tmp/NicheFlow_Server_Handoff/NicheFlow_Revision_v051/runs/main_v051_local_flash_r30",
+    "hashes": {
+      "config.json": "ec63ced6f476ffb1eb45acdeced52f1a015270eff1649e16369515299d332f4d",
+      "events.jsonl": "1483185e4cd758241874fcc1ea07823eb360a35bcace44c314d46d0b888e6060",
+      "checkpoints/round_0030.json": "b9410822dea0bf26571368c9851bffae210a6f3d55b8f0b97a5ef6cfb916112c",
+      "environment.json": "1a1b563adb5b2c5b80ff70833dbeaf717d2cd70fda83be3014b9fdcd028377e5"
+    },
+    "best_workflow": "6e8752093f669ff4ab416e3dc3e58a439ec5316be984de17206dcd4f96eecbc9"
+  },
+  "decode_note": "Original common defaults retained. C keeps its discovered node temperatures 0.7/0.3/0.5; D retains the same planner/final temperatures. A/B both use 0.7. No claim that C-vs-A isolates topology alone.",
+  "sampling_note": "Two independent draws per task/group, average accuracy; no best-of-two selection. Groups do not share generated planner outputs. Flash does not support fixed seed.",
+  "concurrency_note": "Fixed dispatch order with at most 8 independent workflows, 4 concurrent API requests and 1 local inference. DAG dependencies remain sequential. Stop new calls on unknown billing; drain in-flight requests without retry. Report summed call service time separately from run wall time.",
+  "reporting_cost": "Frozen peak uncached reference cost plus actual returned-usage tariff cost; local API spend=0, local seconds separate."
+}

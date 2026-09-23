@@ -1,0 +1,616 @@
+{
+  "status": "passed",
+  "new_model_calls": 0,
+  "calls": 210,
+  "events": 420,
+  "preflight_calls": 5,
+  "requests_reconstructed": 210,
+  "historical_question_overlap": 0,
+  "source_files_rehashed_locally": [
+    "data/source_math_v041/math500.jsonl",
+    "data/source_math_v041/algebra.parquet",
+    "data/source_math_v041/counting_and_probability.parquet",
+    "data/source_math_v041/geometry.parquet",
+    "data/source_math_v041/intermediate_algebra.parquet",
+    "data/source_math_v041/number_theory.parquet",
+    "data/source_math_v041/prealgebra.parquet",
+    "data/source_math_v041/precalculus.parquet"
+  ],
+  "source_files_not_present_locally": [],
+  "frozen_script_and_config_and_data_match": true,
+  "summary_reproduced": true,
+  "semantic_review_rows": 57,
+  "semantic_score_changes": 0,
+  "mode": "non-thinking requested; no structured reasoning reported; one local text includes closing think tag",
+  "reference_spend": {
+    "USD": 0.05528849999999999,
+    "CNY": 3.0684208000000015
+  },
+  "preflight_reference_spend": {
+    "CNY": 0.0021472,
+    "USD": 5.1e-05
+  },
+  "groups": [
+    {
+      "model": "qwen38_max",
+      "n": 42,
+      "correct": 41,
+      "accuracy": 0.9761904761904762,
+      "descriptive_wilson_95pct": [
+        0.8767879842623334,
+        0.9957845958655673
+      ],
+      "currency": "CNY",
+      "cost_per_1000": 41.200857142857146,
+      "mean_seconds": 17.483651670878835,
+      "p95_seconds": 32.857215664998506,
+      "mean_output_tokens": 1078.5,
+      "truncated": 1,
+      "complete_wrong": 0,
+      "complete_missing_box": 0,
+      "truncated_token_fraction": 0.1808508289732212,
+      "literal_think_tag_calls": 0,
+      "breakdown": {
+        "level": {
+          "5": {
+            "n": 21,
+            "correct": 20,
+            "truncated": 1
+          },
+          "4": {
+            "n": 21,
+            "correct": 21,
+            "truncated": 0
+          }
+        },
+        "subject": {
+          "number_theory": {
+            "n": 6,
+            "correct": 6,
+            "truncated": 0
+          },
+          "prealgebra": {
+            "n": 6,
+            "correct": 6,
+            "truncated": 0
+          },
+          "precalculus": {
+            "n": 6,
+            "correct": 6,
+            "truncated": 0
+          },
+          "counting_and_probability": {
+            "n": 6,
+            "correct": 6,
+            "truncated": 0
+          },
+          "algebra": {
+            "n": 6,
+            "correct": 6,
+            "truncated": 0
+          },
+          "geometry": {
+            "n": 6,
+            "correct": 6,
+            "truncated": 0
+          },
+          "intermediate_algebra": {
+            "n": 6,
+            "correct": 5,
+            "truncated": 1
+          }
+        },
+        "asymptote": {
+          "False": {
+            "n": 37,
+            "correct": 36,
+            "truncated": 1
+          },
+          "True": {
+            "n": 5,
+            "correct": 5,
+            "truncated": 0
+          }
+        }
+      }
+    },
+    {
+      "model": "qwen38_27b",
+      "n": 42,
+      "correct": 38,
+      "accuracy": 0.9047619047619048,
+      "descriptive_wilson_95pct": [
+        0.7793489419142897,
+        0.9623377511944261
+      ],
+      "currency": "CNY",
+      "cost_per_1000": 30.084285714285716,
+      "mean_seconds": 41.896527362500606,
+      "p95_seconds": 119.34342750375217,
+      "mean_output_tokens": 2457.5476190476193,
+      "truncated": 2,
+      "complete_wrong": 2,
+      "complete_missing_box": 0,
+      "truncated_token_fraction": 0.15873354195529807,
+      "literal_think_tag_calls": 0,
+      "breakdown": {
+        "level": {
+          "5": {
+            "n": 21,
+            "correct": 18,
+            "truncated": 1
+          },
+          "4": {
+            "n": 21,
+            "correct": 20,
+            "truncated": 1
+          }
+        },
+        "subject": {
+          "number_theory": {
+            "n": 6,
+            "correct": 6,
+            "truncated": 0
+          },
+          "prealgebra": {
+            "n": 6,
+            "correct": 6,
+            "truncated": 0
+          },
+          "precalculus": {
+            "n": 6,
+            "correct": 6,
+            "truncated": 0
+          },
+          "counting_and_probability": {
+            "n": 6,
+            "correct": 5,
+            "truncated": 0
+          },
+          "algebra": {
+            "n": 6,
+            "correct": 6,
+            "truncated": 0
+          },
+          "geometry": {
+            "n": 6,
+            "correct": 4,
+            "truncated": 1
+          },
+          "intermediate_algebra": {
+            "n": 6,
+            "correct": 5,
+            "truncated": 1
+          }
+        },
+        "asymptote": {
+          "False": {
+            "n": 37,
+            "correct": 35,
+            "truncated": 1
+          },
+          "True": {
+            "n": 5,
+            "correct": 3,
+            "truncated": 1
+          }
+        }
+      }
+    },
+    {
+      "model": "qwen37_flash",
+      "n": 42,
+      "correct": 39,
+      "accuracy": 0.9285714285714286,
+      "descriptive_wilson_95pct": [
+        0.8099057319884169,
+        0.9754095901266941
+      ],
+      "currency": "CNY",
+      "cost_per_1000": 1.7724952380952381,
+      "mean_seconds": 25.21709958711948,
+      "p95_seconds": 77.08117984734268,
+      "mean_output_tokens": 2166.1428571428573,
+      "truncated": 1,
+      "complete_wrong": 2,
+      "complete_missing_box": 0,
+      "truncated_token_fraction": 0.09004374683989536,
+      "literal_think_tag_calls": 0,
+      "breakdown": {
+        "level": {
+          "5": {
+            "n": 21,
+            "correct": 20,
+            "truncated": 0
+          },
+          "4": {
+            "n": 21,
+            "correct": 19,
+            "truncated": 1
+          }
+        },
+        "subject": {
+          "number_theory": {
+            "n": 6,
+            "correct": 6,
+            "truncated": 0
+          },
+          "prealgebra": {
+            "n": 6,
+            "correct": 6,
+            "truncated": 0
+          },
+          "precalculus": {
+            "n": 6,
+            "correct": 5,
+            "truncated": 0
+          },
+          "counting_and_probability": {
+            "n": 6,
+            "correct": 5,
+            "truncated": 0
+          },
+          "algebra": {
+            "n": 6,
+            "correct": 6,
+            "truncated": 0
+          },
+          "geometry": {
+            "n": 6,
+            "correct": 5,
+            "truncated": 1
+          },
+          "intermediate_algebra": {
+            "n": 6,
+            "correct": 6,
+            "truncated": 0
+          }
+        },
+        "asymptote": {
+          "False": {
+            "n": 37,
+            "correct": 35,
+            "truncated": 0
+          },
+          "True": {
+            "n": 5,
+            "correct": 4,
+            "truncated": 1
+          }
+        }
+      }
+    },
+    {
+      "model": "deepseek",
+      "n": 42,
+      "correct": 41,
+      "accuracy": 0.9761904761904762,
+      "descriptive_wilson_95pct": [
+        0.8767879842623334,
+        0.9957845958655673
+      ],
+      "currency": "USD",
+      "cost_per_1000": 1.3163928571428571,
+      "mean_seconds": 4.5239875465960635,
+      "p95_seconds": 12.039557971254542,
+      "mean_output_tokens": 1050.0714285714287,
+      "truncated": 0,
+      "complete_wrong": 1,
+      "complete_missing_box": 0,
+      "truncated_token_fraction": 0.0,
+      "literal_think_tag_calls": 0,
+      "breakdown": {
+        "level": {
+          "5": {
+            "n": 21,
+            "correct": 20,
+            "truncated": 0
+          },
+          "4": {
+            "n": 21,
+            "correct": 21,
+            "truncated": 0
+          }
+        },
+        "subject": {
+          "number_theory": {
+            "n": 6,
+            "correct": 6,
+            "truncated": 0
+          },
+          "prealgebra": {
+            "n": 6,
+            "correct": 6,
+            "truncated": 0
+          },
+          "precalculus": {
+            "n": 6,
+            "correct": 6,
+            "truncated": 0
+          },
+          "counting_and_probability": {
+            "n": 6,
+            "correct": 6,
+            "truncated": 0
+          },
+          "algebra": {
+            "n": 6,
+            "correct": 5,
+            "truncated": 0
+          },
+          "geometry": {
+            "n": 6,
+            "correct": 6,
+            "truncated": 0
+          },
+          "intermediate_algebra": {
+            "n": 6,
+            "correct": 6,
+            "truncated": 0
+          }
+        },
+        "asymptote": {
+          "False": {
+            "n": 37,
+            "correct": 36,
+            "truncated": 0
+          },
+          "True": {
+            "n": 5,
+            "correct": 5,
+            "truncated": 0
+          }
+        }
+      }
+    },
+    {
+      "model": "local",
+      "n": 42,
+      "correct": 37,
+      "accuracy": 0.8809523809523809,
+      "descriptive_wilson_95pct": [
+        0.7499960973799032,
+        0.9480619667224176
+      ],
+      "currency": "CNY",
+      "cost_per_1000": 0.0,
+      "mean_seconds": 29.61805848847663,
+      "p95_seconds": 90.41444349480153,
+      "mean_output_tokens": 2692.0714285714284,
+      "truncated": 5,
+      "complete_wrong": 0,
+      "complete_missing_box": 0,
+      "truncated_token_fraction": 0.3622630829508168,
+      "literal_think_tag_calls": 1,
+      "breakdown": {
+        "level": {
+          "5": {
+            "n": 21,
+            "correct": 18,
+            "truncated": 3
+          },
+          "4": {
+            "n": 21,
+            "correct": 19,
+            "truncated": 2
+          }
+        },
+        "subject": {
+          "number_theory": {
+            "n": 6,
+            "correct": 6,
+            "truncated": 0
+          },
+          "prealgebra": {
+            "n": 6,
+            "correct": 6,
+            "truncated": 0
+          },
+          "precalculus": {
+            "n": 6,
+            "correct": 5,
+            "truncated": 1
+          },
+          "counting_and_probability": {
+            "n": 6,
+            "correct": 4,
+            "truncated": 2
+          },
+          "algebra": {
+            "n": 6,
+            "correct": 6,
+            "truncated": 0
+          },
+          "geometry": {
+            "n": 6,
+            "correct": 6,
+            "truncated": 0
+          },
+          "intermediate_algebra": {
+            "n": 6,
+            "correct": 4,
+            "truncated": 2
+          }
+        },
+        "asymptote": {
+          "False": {
+            "n": 37,
+            "correct": 33,
+            "truncated": 4
+          },
+          "True": {
+            "n": 5,
+            "correct": 4,
+            "truncated": 1
+          }
+        }
+      }
+    }
+  ],
+  "contrasts": [
+    {
+      "first": "qwen37_flash",
+      "second": "local",
+      "first_only_correct": 4,
+      "second_only_correct": 2,
+      "delta_pp": 4.761904761904762,
+      "exploratory_stratified_paired_95pct_pp": [
+        -4.761904761904762,
+        14.285714285714285
+      ],
+      "unadjusted_exact_mcnemar_p": 0.6875,
+      "confirmatory": false
+    },
+    {
+      "first": "qwen38_max",
+      "second": "qwen37_flash",
+      "first_only_correct": 3,
+      "second_only_correct": 1,
+      "delta_pp": 4.761904761904762,
+      "exploratory_stratified_paired_95pct_pp": [
+        -2.380952380952381,
+        11.904761904761903
+      ],
+      "unadjusted_exact_mcnemar_p": 0.625,
+      "confirmatory": false
+    },
+    {
+      "first": "qwen38_27b",
+      "second": "qwen37_flash",
+      "first_only_correct": 1,
+      "second_only_correct": 2,
+      "delta_pp": -2.380952380952381,
+      "exploratory_stratified_paired_95pct_pp": [
+        -9.523809523809524,
+        4.761904761904762
+      ],
+      "unadjusted_exact_mcnemar_p": 1.0,
+      "confirmatory": false
+    },
+    {
+      "first": "qwen38_max",
+      "second": "qwen38_27b",
+      "first_only_correct": 3,
+      "second_only_correct": 0,
+      "delta_pp": 7.142857142857142,
+      "exploratory_stratified_paired_95pct_pp": [
+        0.0,
+        14.285714285714285
+      ],
+      "unadjusted_exact_mcnemar_p": 0.25,
+      "confirmatory": false
+    },
+    {
+      "first": "qwen38_max",
+      "second": "local",
+      "first_only_correct": 4,
+      "second_only_correct": 0,
+      "delta_pp": 9.523809523809524,
+      "exploratory_stratified_paired_95pct_pp": [
+        2.380952380952381,
+        16.666666666666664
+      ],
+      "unadjusted_exact_mcnemar_p": 0.125,
+      "confirmatory": false
+    },
+    {
+      "first": "qwen38_max",
+      "second": "deepseek",
+      "first_only_correct": 1,
+      "second_only_correct": 1,
+      "delta_pp": 0.0,
+      "exploratory_stratified_paired_95pct_pp": [
+        -4.761904761904762,
+        4.761904761904762
+      ],
+      "unadjusted_exact_mcnemar_p": 1.0,
+      "confirmatory": false
+    }
+  ],
+  "gold_oracle_diagnostics": [
+    {
+      "models": [
+        "local",
+        "qwen38_max"
+      ],
+      "correct_with_gold_oracle": 41,
+      "deployable": false,
+      "note": "Uses gold to select; diagnostic ceiling on these frozen answers only."
+    },
+    {
+      "models": [
+        "qwen37_flash",
+        "qwen38_max"
+      ],
+      "correct_with_gold_oracle": 42,
+      "deployable": false,
+      "note": "Uses gold to select; diagnostic ceiling on these frozen answers only."
+    },
+    {
+      "models": [
+        "local",
+        "qwen37_flash"
+      ],
+      "correct_with_gold_oracle": 41,
+      "deployable": false,
+      "note": "Uses gold to select; diagnostic ceiling on these frozen answers only."
+    },
+    {
+      "models": [
+        "local",
+        "qwen37_flash",
+        "qwen38_max"
+      ],
+      "correct_with_gold_oracle": 42,
+      "deployable": false,
+      "note": "Uses gold to select; diagnostic ceiling on these frozen answers only."
+    },
+    {
+      "models": [
+        "qwen38_max",
+        "deepseek"
+      ],
+      "correct_with_gold_oracle": 42,
+      "deployable": false,
+      "note": "Uses gold to select; diagnostic ceiling on these frozen answers only."
+    }
+  ],
+  "posthoc_cascade_replays": [
+    {
+      "first": "local",
+      "fallback": "qwen38_max",
+      "rule": "length_or_no_parseable_box_only",
+      "post_hoc_replay_not_live_execution": true,
+      "correct": 41.0,
+      "n": 42,
+      "fallback_count": 5,
+      "cost_per_1000": {
+        "CNY": 15.549142857142856
+      },
+      "mean_sum_recorded_call_seconds": 36.68689220223833,
+      "note": "No gold trigger; cached independent answers approximate fallback. No quality noninferiority claim."
+    },
+    {
+      "first": "qwen37_flash",
+      "fallback": "qwen38_max",
+      "rule": "length_or_no_parseable_box_only",
+      "post_hoc_replay_not_live_execution": true,
+      "correct": 40.0,
+      "n": 42,
+      "fallback_count": 1,
+      "cost_per_1000": {
+        "CNY": 3.4776380952380954
+      },
+      "mean_sum_recorded_call_seconds": 26.001985926214687,
+      "note": "No gold trigger; cached independent answers approximate fallback. No quality noninferiority claim."
+    }
+  ],
+  "elapsed_main_seconds": 1268.754582804002,
+  "limitations": [
+    "42 stratified train questions, one sample; not final evaluation.",
+    "Non-thinking/general Qwen sampling, finite 8192 output limit; not intrinsic model capability.",
+    "Cloud latency includes network under parallel experiment; no serving-SLA inference.",
+    "Native-currency frozen uncached tariffs, DeepSeek peak; not invoices; local GPU excluded.",
+    "Frozen notes contain obsolete Qwen3.8 Flash alias sentence; actual five model IDs and receipts are consistent."
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "profile": "remaining_two_calls_for_generation_protocol_debug",
+  "tasks": "data/tasks.jsonl",
+  "tasks_sha256": "01459b0639b0e54731122404d485a7561d4998f41206221bb88e664a031e3e2f",
+  "model_path": "/root/.cache/huggingface/hub/models--Qwen--Qwen2.5-7B-Instruct-AWQ/snapshots/b25037543e9394b818fdfca67ab2a00ecc7dd641",
+  "max_context_tokens": 8192,
+  "max_calls": 2,
+  "max_seconds": 600,
+  "generation_max_nodes": 1,
+  "decode": {"seed": 73129, "temperature": 0.7, "top_p": 0.8, "max_new_tokens": 1024},
+  "notes": ["First component run used 2 calls; this run may use only the remaining 2 of the reserved 4.", "One-node prompt mutation checks generator protocol only, not full search-space coverage.", "Preserve the failed predecessor run; do not reinterpret its rejected graph as valid."]
+}

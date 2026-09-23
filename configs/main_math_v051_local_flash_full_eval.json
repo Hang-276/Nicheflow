@@ -1,0 +1,157 @@
+{
+  "profile": "main_method_v1",
+  "rounds": 30,
+  "formal_rounds": 30,
+  "data_manifest": "data/main_math500_v050/manifest.json",
+  "data_manifest_sha256": "e94d46274e482a35eb1050d74179e87617d2b26097458f2377d41b6346d5df24",
+  "credentials_file": "/root/.config/nicheflow/credentials.env",
+  "models": {
+    "local": {
+      "kind": "local",
+      "path": "/root/.cache/huggingface/hub/models--Qwen--Qwen2.5-7B-Instruct-AWQ/snapshots/b25037543e9394b818fdfca67ab2a00ecc7dd641",
+      "noncheap": false,
+      "max_context_tokens": 8192,
+      "call_timeout_seconds": 180,
+      "accounting_usd_per_gpu_hour": 0.0,
+      "rate_basis": "User-confirmed 2026-09-21: exclude GPU rental/hardware/electricity from monetary objective; report measured local inference seconds separately. Zero API spend is not zero resource use."
+    },
+    "strong": {
+      "kind": "api",
+      "provider": "deepseek",
+      "model": "deepseek-flash",
+      "accepted_response_models": [
+        "deepseek-flash",
+        "deepseek-v4.1-flash"
+      ],
+      "documented_model_version": "DeepSeek-V4.1-Flash as of 2026-09-20; alias is provider-managed, no immutable snapshot promised",
+      "endpoint": "https://api.deepseek.com/chat/completions",
+      "key_environment": "DEEPSEEK_API_KEY",
+      "noncheap": true,
+      "max_context_tokens": 32768,
+      "call_timeout_seconds": 120,
+      "supports_seed": false,
+      "thinking": "disabled",
+      "reasoning_effort": "high",
+      "pricing": {
+        "utc_peak_offpeak": true,
+        "source": "https://api-docs.deepseek.com/quick_start/pricing/",
+        "retrieved_date": "2026-09-21",
+        "peak": {
+          "input_per_million_usd": 0.3,
+          "cached_input_per_million_usd": 0.006,
+          "output_per_million_usd": 1.2
+        },
+        "off_peak": {
+          "input_per_million_usd": 0.15,
+          "cached_input_per_million_usd": 0.003,
+          "output_per_million_usd": 0.6
+        }
+      }
+    }
+  },
+  "generation_model": "strong",
+  "seed_model": "local",
+  "generation_max_nodes": 12,
+  "allowed_operators": [
+    "Generate",
+    "Format",
+    "Review&Revise",
+    "Ensemble",
+    "Identity",
+    "Join"
+  ],
+  "operator_scope": "text-math configuration; Programmer/Code/Test are supported by executor but require a provisioned sandbox profile",
+  "decode": {
+    "seed": 73129,
+    "temperature": 0.7,
+    "top_p": 0.8,
+    "max_new_tokens": 2048
+  },
+  "seed_prompts": {
+    "solve": "Solve the supplied task. Follow its output_contract exactly. Return your final answer clearly.",
+    "reason": "Work through the task carefully and check the reasoning. Follow the task output_contract exactly.",
+    "review": "Review the upstream solution, correct errors and independently verify the result. Follow the task output_contract exactly.",
+    "merge": "Compare the independent upstream solutions and verify their claims. Produce a single final answer following the task output_contract."
+  },
+  "queries_per_deploy_block": 8,
+  "policy": {
+    "seed": 20260920,
+    "k": 2,
+    "population_threshold": 1,
+    "rho0": 1.0,
+    "alpha": 0.01,
+    "diversity_weight": 0.1,
+    "search_exploration": 1.0,
+    "kernel_bandwidth": 1.0,
+    "broad_depth_ratio": 0.67,
+    "ridge": 1.0,
+    "noise_bound": 1.0,
+    "parameter_bound": 2.0,
+    "delta": 0.05,
+    "weight_grid": [
+      [
+        0.5,
+        0.5
+      ],
+      [
+        0.25,
+        0.75
+      ],
+      [
+        0.75,
+        0.25
+      ]
+    ],
+    "proxy_hidden": 8,
+    "proxy_steps": 50,
+    "proxy_learning_rate": 0.05,
+    "proxy_fraction": 0.5,
+    "reference_usd_per_gpu_hour": 1.0,
+    "cost_scale_usd": 0.002777777777777778,
+    "curvature_window": 32,
+    "curvature_confidence_constant": 1.0,
+    "epsilon_max": 0.8,
+    "blocks_per_cycle": 2
+  },
+  "evaluation": {
+    "status": "configured",
+    "selection": "frozen_oful_chebyshev",
+    "samples_per_task": 1,
+    "pass_k": [
+      1
+    ],
+    "benchmark": "math500_full",
+    "note": "Complete 500-task held-out terminal evaluation; independent explicit invocation only."
+  },
+  "limits": {
+    "fixed_seconds": 14400,
+    "seconds_per_round": 7200,
+    "api_usd_fixed": 3.0,
+    "api_usd_per_round": 2.0,
+    "evaluation_seconds": 86400,
+    "evaluation_api_usd": 15.0
+  },
+  "notes": [
+    "User authorized 30-round staged experiment on 2026-09-21 with local Qwen2.5-7B-Instruct-AWQ and DeepSeek Flash only; no Pro or middle API calls.",
+    "Primary cost objective is external API spend. Local capacity is excluded from monetary cost by explicit user choice; local inference seconds remain observable. This is not a total operating cost comparison.",
+    "Keep cost_scale_usd and router/exploration settings unchanged; record the changed cost objective explicitly instead of tuning for favorable results.",
+    "Freeze 70 development and 280 calibration tasks; exclude held-out evaluation from checkpoint continuation decisions.",
+    "Stop after round 30 with checkpoint. No automatic extension, test evaluation, retries, or reuse of the old six-round learning state.",
+    "API costs use returned token usage and frozen provider tariffs, not verified invoices. Search generation fees count in total API spend.",
+    "Quality/cost transformations, snapshot-HV curvature and allocation remain engineering choices without transferred theoretical guarantees."
+  ],
+  "input_protocol": "math_verbatim_with_inline_asymptote_v1",
+  "length_limit_outcome": "zero_quality_no_retry",
+  "workflow_output_policy": "preserve_boxed_v1",
+  "research_revision": "feedback_semantic_v2",
+  "semantic": {
+    "path": "assets/minilm",
+    "manifest_sha256": "5c068b630d7d844404e68485d7c65f953ae90968d01257b9688e5e893a54843f",
+    "dimension": 8,
+    "projection_seed": 20260921,
+    "cpu_threads": 2,
+    "representation": "masked_mean_all_254_token_chunks_then_fixed_hash_projection_l2_v1"
+  },
+  "cost_objective": "external_api_spend",
+  "experiment_id": "v051_local_flash_api_spend_r30"
+}

@@ -1,0 +1,418 @@
+{
+  "reviewer": "Codex contextual offline review, not blinded and not an independent human adjudication",
+  "all_nonliteral_rows_reviewed": 57,
+  "unique_cases": 32,
+  "score_changes": 0,
+  "new_model_calls": 0,
+  "cases": [
+    {
+      "task_id": "math/train/prealgebra/889",
+      "gold": "\\frac{3}{5}",
+      "answer": "3/5",
+      "decision": "symbolic_match",
+      "quality": 1.0,
+      "models": [
+        "qwen37_flash",
+        "local"
+      ],
+      "reviewed_quality": 1.0,
+      "reason": "3/5 is the same requested probability; slash, frac and dfrac differ only in notation."
+    },
+    {
+      "task_id": "math/train/prealgebra/889",
+      "gold": "\\frac{3}{5}",
+      "answer": "\\dfrac{3}{5}",
+      "decision": "symbolic_match",
+      "quality": 1.0,
+      "models": [
+        "qwen38_max"
+      ],
+      "reviewed_quality": 1.0,
+      "reason": "3/5 is the same requested probability; slash, frac and dfrac differ only in notation."
+    },
+    {
+      "task_id": "math/train/counting_and_probability/87",
+      "gold": "\\frac{5}{7}",
+      "answer": "\\dfrac{5}{7}",
+      "decision": "symbolic_match",
+      "quality": 1.0,
+      "models": [
+        "qwen38_max"
+      ],
+      "reviewed_quality": 1.0,
+      "reason": "5/7 is unchanged by slash/LaTeX fraction notation."
+    },
+    {
+      "task_id": "math/train/counting_and_probability/87",
+      "gold": "\\frac{5}{7}",
+      "answer": "5/7",
+      "decision": "symbolic_match",
+      "quality": 1.0,
+      "models": [
+        "qwen37_flash"
+      ],
+      "reviewed_quality": 1.0,
+      "reason": "5/7 is unchanged by slash/LaTeX fraction notation."
+    },
+    {
+      "task_id": "math/train/counting_and_probability/725",
+      "gold": "20",
+      "answer": null,
+      "decision": "truncated",
+      "quality": 0.0,
+      "models": [
+        "local"
+      ],
+      "reviewed_quality": 0.0,
+      "reason": "Repeated recounting of lattice-point lines, no boxed answer."
+    },
+    {
+      "task_id": "math/train/algebra/620",
+      "gold": "(1,-2)",
+      "answer": "(1, -2)",
+      "decision": "symbolic_match",
+      "quality": 1.0,
+      "models": [
+        "deepseek",
+        "qwen37_flash",
+        "qwen38_27b",
+        "local"
+      ],
+      "reviewed_quality": 1.0,
+      "reason": "The ordered center (1,-2) retains both coordinates in the same order; whitespace only."
+    },
+    {
+      "task_id": "math/train/precalculus/104",
+      "gold": "\\frac{83}{499}",
+      "answer": "\\dfrac{83}{499}",
+      "decision": "symbolic_match",
+      "quality": 1.0,
+      "models": [
+        "qwen38_max"
+      ],
+      "reviewed_quality": 1.0,
+      "reason": "83/499 is unchanged by frac versus dfrac."
+    },
+    {
+      "task_id": "math/train/counting_and_probability/688",
+      "gold": "100",
+      "answer": "1971",
+      "decision": "needs_review",
+      "quality": 0.0,
+      "models": [
+        "qwen37_flash",
+        "qwen38_27b"
+      ],
+      "reviewed_quality": 0.0,
+      "reason": "1971 counts 2a+b<=12; benchmark reference requires 2a+b=12, yielding C(5,3)+C(5,4)C(6,4)+C(5,5)C(6,2)=100. Wording sensitivity is disclosed; retain the frozen reference interpretation for all models."
+    },
+    {
+      "task_id": "math/train/algebra/1014",
+      "gold": "\\frac{2}{3}",
+      "answer": "\\dfrac{2}{3}",
+      "decision": "symbolic_match",
+      "quality": 1.0,
+      "models": [
+        "qwen38_max"
+      ],
+      "reviewed_quality": 1.0,
+      "reason": "The same exact fraction 2/3."
+    },
+    {
+      "task_id": "math/train/geometry/775",
+      "gold": "34\\text{ sq. units}",
+      "answer": "34",
+      "decision": "symbolic_match",
+      "quality": 1.0,
+      "models": [
+        "deepseek",
+        "qwen38_max",
+        "local"
+      ],
+      "reviewed_quality": 1.0,
+      "reason": "The question asks for a number of square units; 34 implicitly uses those units."
+    },
+    {
+      "task_id": "math/train/number_theory/421",
+      "gold": "10000",
+      "answer": "10000_4",
+      "decision": "symbolic_match",
+      "quality": 1.0,
+      "models": [
+        "deepseek"
+      ],
+      "reviewed_quality": 1.0,
+      "reason": "The question explicitly requests base 4; 10000_4 adds the requested base label to 10000. Not a general rule to discard subscripts."
+    },
+    {
+      "task_id": "math/train/geometry/775",
+      "gold": "34\\text{ sq. units}",
+      "answer": null,
+      "decision": "truncated",
+      "quality": 0.0,
+      "models": [
+        "qwen37_flash",
+        "qwen38_27b"
+      ],
+      "reviewed_quality": 0.0,
+      "reason": "Extended/repeated geometric reconstruction, no boxed final answer; 27B text reaches 34 before continuing."
+    },
+    {
+      "task_id": "math/train/prealgebra/334",
+      "gold": "1.85\\ \\text{USD}",
+      "answer": "1.85",
+      "decision": "symbolic_match",
+      "quality": 1.0,
+      "models": [
+        "qwen37_flash",
+        "deepseek",
+        "qwen38_max",
+        "qwen38_27b",
+        "local"
+      ],
+      "reviewed_quality": 1.0,
+      "reason": "The question explicitly asks for USD rounded to hundredths; 1.85 and 1.85 USD have identical meaning."
+    },
+    {
+      "task_id": "math/train/counting_and_probability/398",
+      "gold": "420",
+      "answer": null,
+      "decision": "truncated",
+      "quality": 0.0,
+      "models": [
+        "local"
+      ],
+      "reviewed_quality": 0.0,
+      "reason": "Text reaches 420 but continues checking until cutoff; no boxed answer."
+    },
+    {
+      "task_id": "math/train/precalculus/266",
+      "gold": "222",
+      "answer": "49",
+      "decision": "needs_review",
+      "quality": 0.0,
+      "models": [
+        "qwen37_flash"
+      ],
+      "reviewed_quality": 0.0,
+      "reason": "49 differs from 222; response guesses (17-sqrt(13))/18 despite violating the coprimality condition. Reference evaluates (111-4sqrt(35))/72, with sum 222."
+    },
+    {
+      "task_id": "math/train/algebra/246",
+      "gold": "5^{12}",
+      "answer": "5^{11}",
+      "decision": "needs_review",
+      "quality": 0.0,
+      "models": [
+        "deepseek"
+      ],
+      "reviewed_quality": 0.0,
+      "reason": "5^11 differs from 5^12. After the sixth division the next operation is still multiplication by 5; the response prematurely ends one operation early."
+    },
+    {
+      "task_id": "math/train/counting_and_probability/605",
+      "gold": "\\frac{21}{50}",
+      "answer": "21/50",
+      "decision": "symbolic_match",
+      "quality": 1.0,
+      "models": [
+        "qwen38_max"
+      ],
+      "reviewed_quality": 1.0,
+      "reason": "The exact fraction 21/50 is identical."
+    },
+    {
+      "task_id": "math/train/precalculus/266",
+      "gold": "222",
+      "answer": null,
+      "decision": "truncated",
+      "quality": 0.0,
+      "models": [
+        "local"
+      ],
+      "reviewed_quality": 0.0,
+      "reason": "A long run of identical trigonometric-expression lines; no boxed answer."
+    },
+    {
+      "task_id": "math/train/precalculus/54",
+      "gold": "\\text{(E)}",
+      "answer": "E",
+      "decision": "symbolic_match",
+      "quality": 1.0,
+      "models": [
+        "qwen38_max",
+        "qwen37_flash",
+        "deepseek",
+        "qwen38_27b",
+        "local"
+      ],
+      "reviewed_quality": 1.0,
+      "reason": "Both identify option E (Hyperbola), exactly as the letter-only question requests."
+    },
+    {
+      "task_id": "math/train/precalculus/122",
+      "gold": "\\frac{1}{\\sqrt{2}}",
+      "answer": "\\frac{\\sqrt{2}}{2}",
+      "decision": "symbolic_match",
+      "quality": 1.0,
+      "models": [
+        "qwen37_flash",
+        "qwen38_27b",
+        "local"
+      ],
+      "reviewed_quality": 1.0,
+      "reason": "For the positive square root, sqrt(2)/2 equals 1/sqrt(2) exactly."
+    },
+    {
+      "task_id": "math/train/intermediate_algebra/530",
+      "gold": "3",
+      "answer": "3",
+      "decision": "truncated",
+      "quality": 0.0,
+      "models": [
+        "local"
+      ],
+      "reviewed_quality": 0.0,
+      "reason": "A boxed 3 occurs repeatedly, then continued checking and a literal </think> tag before cutoff. Keep zero under the prespecified finish_reason rule; do not change acceptance post hoc."
+    },
+    {
+      "task_id": "math/train/precalculus/122",
+      "gold": "\\frac{1}{\\sqrt{2}}",
+      "answer": "\\dfrac{\\sqrt{2}}{2}",
+      "decision": "symbolic_match",
+      "quality": 1.0,
+      "models": [
+        "qwen38_max"
+      ],
+      "reviewed_quality": 1.0,
+      "reason": "For the positive square root, sqrt(2)/2 equals 1/sqrt(2) exactly."
+    },
+    {
+      "task_id": "math/train/intermediate_algebra/817",
+      "gold": "22 \\sqrt{11} - 57",
+      "answer": "22\\sqrt{11}-57",
+      "decision": "symbolic_match",
+      "quality": 1.0,
+      "models": [
+        "deepseek"
+      ],
+      "reviewed_quality": 1.0,
+      "reason": "22 sqrt(11)-57 is identical apart from whitespace."
+    },
+    {
+      "task_id": "math/train/intermediate_algebra/817",
+      "gold": "22 \\sqrt{11} - 57",
+      "answer": "22\\sqrt{11} - 57",
+      "decision": "symbolic_match",
+      "quality": 1.0,
+      "models": [
+        "qwen37_flash"
+      ],
+      "reviewed_quality": 1.0,
+      "reason": "22 sqrt(11)-57 is identical apart from whitespace."
+    },
+    {
+      "task_id": "math/train/intermediate_algebra/817",
+      "gold": "22 \\sqrt{11} - 57",
+      "answer": null,
+      "decision": "truncated",
+      "quality": 0.0,
+      "models": [
+        "local",
+        "qwen38_27b",
+        "qwen38_max"
+      ],
+      "reviewed_quality": 0.0,
+      "reason": "Prolonged re-derivation/checking, no boxed answer. Max reaches the correct expression in prose and continues until cutoff; extra budget is not proven to fix this."
+    },
+    {
+      "task_id": "math/train/precalculus/679",
+      "gold": "\\begin{pmatrix} 4/5 \\\\ 3/5 \\end{pmatrix}",
+      "answer": "\\begin{pmatrix} \\frac{4}{5} \\\\ \\frac{3}{5} \\end{pmatrix}",
+      "decision": "symbolic_match",
+      "quality": 1.0,
+      "models": [
+        "local"
+      ],
+      "reviewed_quality": 1.0,
+      "reason": "Both are 2-by-1 column vectors, entries 4/5 then 3/5; dimensions and order preserved."
+    },
+    {
+      "task_id": "math/train/intermediate_algebra/890",
+      "gold": "\\frac16",
+      "answer": "\\frac{1}{6}",
+      "decision": "symbolic_match",
+      "quality": 1.0,
+      "models": [
+        "qwen37_flash",
+        "deepseek",
+        "qwen38_27b",
+        "local"
+      ],
+      "reviewed_quality": 1.0,
+      "reason": "Both denote 1/6; braces/display fraction notation only."
+    },
+    {
+      "task_id": "math/train/intermediate_algebra/890",
+      "gold": "\\frac16",
+      "answer": "\\dfrac{1}{6}",
+      "decision": "symbolic_match",
+      "quality": 1.0,
+      "models": [
+        "qwen38_max"
+      ],
+      "reviewed_quality": 1.0,
+      "reason": "Both denote 1/6; braces/display fraction notation only."
+    },
+    {
+      "task_id": "math/train/prealgebra/206",
+      "gold": "\\frac{\\pi}{4}",
+      "answer": "\\dfrac{\\pi}{4}",
+      "decision": "symbolic_match",
+      "quality": 1.0,
+      "models": [
+        "qwen38_max"
+      ],
+      "reviewed_quality": 1.0,
+      "reason": "Both denote pi/4 exactly."
+    },
+    {
+      "task_id": "math/train/geometry/72",
+      "gold": "8\\sqrt{2}-4-\\pi",
+      "answer": "8\\sqrt{2} - 4 - \\pi",
+      "decision": "symbolic_match",
+      "quality": 1.0,
+      "models": [
+        "deepseek",
+        "qwen38_max",
+        "qwen37_flash"
+      ],
+      "reviewed_quality": 1.0,
+      "reason": "8 sqrt(2)-4-pi is identical under whitespace and reordering of the two subtraction terms."
+    },
+    {
+      "task_id": "math/train/geometry/72",
+      "gold": "8\\sqrt{2}-4-\\pi",
+      "answer": "8\\sqrt{2} - \\pi - 4",
+      "decision": "symbolic_match",
+      "quality": 1.0,
+      "models": [
+        "local"
+      ],
+      "reviewed_quality": 1.0,
+      "reason": "8 sqrt(2)-4-pi is identical under whitespace and reordering of the two subtraction terms."
+    },
+    {
+      "task_id": "math/train/geometry/72",
+      "gold": "8\\sqrt{2}-4-\\pi",
+      "answer": "6\\sqrt{2}-4",
+      "decision": "needs_review",
+      "quality": 0.0,
+      "models": [
+        "qwen38_27b"
+      ],
+      "reviewed_quality": 0.0,
+      "reason": "6sqrt(2)-4 differs from 8sqrt(2)-4-pi. Response treats curved circle boundaries as straight polygon edges; reference subtracts two triangles and two pi/2 sectors from the rectangle."
+    }
+  ]
+}

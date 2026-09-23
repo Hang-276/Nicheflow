@@ -1,0 +1,11 @@
+{
+  "profile": "engineering_component_probe_not_full_smoke",
+  "tasks": "data/tasks.jsonl",
+  "tasks_sha256": "01459b0639b0e54731122404d485a7561d4998f41206221bb88e664a031e3e2f",
+  "model_path": "/root/.cache/huggingface/hub/models--Qwen--Qwen2.5-7B-Instruct-AWQ/snapshots/b25037543e9394b818fdfca67ab2a00ecc7dd641",
+  "max_context_tokens": 8192,
+  "max_calls": 4,
+  "max_seconds": 600,
+  "decode": {"seed": 73129, "temperature": 0.7, "top_p": 0.8, "max_new_tokens": 1024},
+  "notes": ["Counts toward proposed 150-call total; no automatic retry or extension.", "Uses one existing development task only; no new generalization claim."]
+}

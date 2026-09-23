@@ -1,0 +1,30 @@
+{
+  "math_equivalence": {
+    "repo": "hendrycks/math",
+    "revision": "940d1bf8d976b7e2afa9059a52350ffcdc880c1c",
+    "url": "https://raw.githubusercontent.com/hendrycks/math/940d1bf8d976b7e2afa9059a52350ffcdc880c1c/modeling/math_equivalence.py",
+    "sha256": "c4101b1f51a2bb65665194aecd9f761d668c0c248a0350f196c2950e87488527",
+    "license_url": "https://raw.githubusercontent.com/hendrycks/math/940d1bf8d976b7e2afa9059a52350ffcdc880c1c/LICENSE"
+  },
+  "hotpot_evaluate": {
+    "repo": "hotpotqa/hotpot",
+    "revision": "fa3a36370899e1d85822de61e58c85ea19993154",
+    "url": "https://raw.githubusercontent.com/hotpotqa/hotpot/fa3a36370899e1d85822de61e58c85ea19993154/hotpot_evaluate_v1.py",
+    "sha256": "d35fc91a6db21d791dbdda11daf3856e9359f5701d54e3eefba20d88fecc02c0",
+    "license_url": "https://raw.githubusercontent.com/hotpotqa/hotpot/fa3a36370899e1d85822de61e58c85ea19993154/LICENSE.txt"
+  },
+  "drop_evaluate": {
+    "repo": "allenai/allennlp-models",
+    "revision": "888596c8d41fcde755e91ca00474b88009175700",
+    "url": "https://raw.githubusercontent.com/allenai/allennlp-models/888596c8d41fcde755e91ca00474b88009175700/allennlp_models/rc/tools/drop.py",
+    "sha256": "589abfbb8a85760cdb3d30381068acb4545c82076311c2da5a112e283193e0a2",
+    "license_url": "https://raw.githubusercontent.com/allenai/allennlp-models/888596c8d41fcde755e91ca00474b88009175700/LICENSE"
+  },
+  "gaia_evaluate": {
+    "repo": "gaia-benchmark/leaderboard",
+    "revision": "9f133d71362e77b3539f1514f31b9c101a545fec",
+    "url": "https://huggingface.co/spaces/gaia-benchmark/leaderboard/resolve/9f133d71362e77b3539f1514f31b9c101a545fec/scorer.py",
+    "sha256": "0d44c07f3046eec521697c22e3eaca8719cc81e422a8eaf32695c5f22bdac6e2",
+    "license_source": "Space README metadata preserved in gaia_evaluate.LICENSE"
+  }
+}

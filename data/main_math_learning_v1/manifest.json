@@ -1,0 +1,229 @@
+{
+  "schema": "nicheflow_data_pack_v1",
+  "dataset": "math",
+  "repo": "EleutherAI/hendrycks_math",
+  "source_revision_at_original_download": "21a5633873b6a120296cce3e2df9d5550074f4a3",
+  "source_access": "previously archived viewer responses; bytes pinned by SHA256, not a new revision-pinned download",
+  "scope": "fixed learning subset of archived first 100 train rows in three subjects; not all MATH",
+  "sampling_seed": 20260920,
+  "per_subject_development": 2,
+  "per_subject_calibration": 8,
+  "selection_before_new_model_outputs": true,
+  "answer_type_filter": null,
+  "source_files": [
+    {
+      "path": "data/raw/algebra_0.json",
+      "sha256": "2c60d694ae055f84ef114b8e4b7d96bd454aeb39d1793194bbbadb5318451ab1",
+      "subject": "algebra",
+      "available_rows": 100,
+      "eligible_rows": 91
+    },
+    {
+      "path": "data/raw/counting_and_probability_0.json",
+      "sha256": "1a168c511a3f5f932774c86c0825328690a65821ee95856e25cfe62b97b1c73f",
+      "subject": "counting_and_probability",
+      "available_rows": 100,
+      "eligible_rows": 78
+    },
+    {
+      "path": "data/raw/number_theory_0.json",
+      "sha256": "58cf7d78cd6abea81f3aa6c5a8b6d4dc62fe495f2e7ce5ad566226878983b1fa",
+      "subject": "number_theory",
+      "available_rows": 100,
+      "eligible_rows": 96
+    }
+  ],
+  "exclusions": [
+    {
+      "id": "algebra/train/8",
+      "reason": "diagram/truncated/previously_used_question"
+    },
+    {
+      "id": "algebra/train/24",
+      "reason": "diagram/truncated/previously_used_question"
+    },
+    {
+      "id": "algebra/train/26",
+      "reason": "diagram/truncated/previously_used_question"
+    },
+    {
+      "id": "algebra/train/32",
+      "reason": "diagram/truncated/previously_used_question"
+    },
+    {
+      "id": "algebra/train/46",
+      "reason": "diagram/truncated/previously_used_question"
+    },
+    {
+      "id": "algebra/train/51",
+      "reason": "diagram/truncated/previously_used_question"
+    },
+    {
+      "id": "algebra/train/62",
+      "reason": "diagram/truncated/previously_used_question"
+    },
+    {
+      "id": "algebra/train/74",
+      "reason": "diagram/truncated/previously_used_question"
+    },
+    {
+      "id": "algebra/train/79",
+      "reason": "diagram/truncated/previously_used_question"
+    },
+    {
+      "id": "counting_and_probability/train/2",
+      "reason": "diagram/truncated/previously_used_question"
+    },
+    {
+      "id": "counting_and_probability/train/14",
+      "reason": "diagram/truncated/previously_used_question"
+    },
+    {
+      "id": "counting_and_probability/train/17",
+      "reason": "diagram/truncated/previously_used_question"
+    },
+    {
+      "id": "counting_and_probability/train/18",
+      "reason": "diagram/truncated/previously_used_question"
+    },
+    {
+      "id": "counting_and_probability/train/19",
+      "reason": "diagram/truncated/previously_used_question"
+    },
+    {
+      "id": "counting_and_probability/train/20",
+      "reason": "diagram/truncated/previously_used_question"
+    },
+    {
+      "id": "counting_and_probability/train/26",
+      "reason": "diagram/truncated/previously_used_question"
+    },
+    {
+      "id": "counting_and_probability/train/29",
+      "reason": "diagram/truncated/previously_used_question"
+    },
+    {
+      "id": "counting_and_probability/train/35",
+      "reason": "diagram/truncated/previously_used_question"
+    },
+    {
+      "id": "counting_and_probability/train/39",
+      "reason": "diagram/truncated/previously_used_question"
+    },
+    {
+      "id": "counting_and_probability/train/41",
+      "reason": "diagram/truncated/previously_used_question"
+    },
+    {
+      "id": "counting_and_probability/train/42",
+      "reason": "diagram/truncated/previously_used_question"
+    },
+    {
+      "id": "counting_and_probability/train/46",
+      "reason": "diagram/truncated/previously_used_question"
+    },
+    {
+      "id": "counting_and_probability/train/54",
+      "reason": "diagram/truncated/previously_used_question"
+    },
+    {
+      "id": "counting_and_probability/train/55",
+      "reason": "diagram/truncated/previously_used_question"
+    },
+    {
+      "id": "counting_and_probability/train/65",
+      "reason": "diagram/truncated/previously_used_question"
+    },
+    {
+      "id": "counting_and_probability/train/66",
+      "reason": "diagram/truncated/previously_used_question"
+    },
+    {
+      "id": "counting_and_probability/train/69",
+      "reason": "diagram/truncated/previously_used_question"
+    },
+    {
+      "id": "counting_and_probability/train/79",
+      "reason": "diagram/truncated/previously_used_question"
+    },
+    {
+      "id": "counting_and_probability/train/86",
+      "reason": "diagram/truncated/previously_used_question"
+    },
+    {
+      "id": "counting_and_probability/train/90",
+      "reason": "diagram/truncated/previously_used_question"
+    },
+    {
+      "id": "counting_and_probability/train/92",
+      "reason": "diagram/truncated/previously_used_question"
+    },
+    {
+      "id": "number_theory/train/62",
+      "reason": "diagram/truncated/previously_used_question"
+    },
+    {
+      "id": "number_theory/train/76",
+      "reason": "diagram/truncated/previously_used_question"
+    },
+    {
+      "id": "number_theory/train/84",
+      "reason": "diagram/truncated/previously_used_question"
+    },
+    {
+      "id": "number_theory/train/99",
+      "reason": "diagram/truncated/previously_used_question"
+    }
+  ],
+  "partitions": {
+    "development": {
+      "path": "development.jsonl",
+      "sha256": "f4a5a03f5b617919ec64b4b25d015bddd24f51f7b5934165e9fbb2dfba4e7d31",
+      "count": 6,
+      "task_ids": [
+        "math/train/number_theory/12",
+        "math/train/counting_and_probability/68",
+        "math/train/counting_and_probability/82",
+        "math/train/number_theory/53",
+        "math/train/algebra/44",
+        "math/train/algebra/80"
+      ]
+    },
+    "calibration": {
+      "path": "calibration.jsonl",
+      "sha256": "0a2674a8e83b37375a071b4e83454c003dd359587f1666b3ec85569591d7b39f",
+      "count": 24,
+      "task_ids": [
+        "math/train/algebra/36",
+        "math/train/number_theory/80",
+        "math/train/counting_and_probability/11",
+        "math/train/number_theory/5",
+        "math/train/counting_and_probability/8",
+        "math/train/algebra/42",
+        "math/train/algebra/78",
+        "math/train/counting_and_probability/12",
+        "math/train/counting_and_probability/23",
+        "math/train/counting_and_probability/75",
+        "math/train/number_theory/7",
+        "math/train/number_theory/87",
+        "math/train/algebra/37",
+        "math/train/number_theory/71",
+        "math/train/algebra/38",
+        "math/train/number_theory/98",
+        "math/train/algebra/45",
+        "math/train/algebra/60",
+        "math/train/algebra/89",
+        "math/train/counting_and_probability/15",
+        "math/train/counting_and_probability/40",
+        "math/train/number_theory/4",
+        "math/train/counting_and_probability/84",
+        "math/train/number_theory/13"
+      ]
+    }
+  },
+  "evaluation": {
+    "status": "deferred",
+    "reason": "user will decide full test set or frozen subset later"
+  },
+  "order_policy": "seeded shuffle across subjects within each partition"
+}

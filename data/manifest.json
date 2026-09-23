@@ -1,0 +1,64 @@
+{
+  "dataset": "EleutherAI/hendrycks_math",
+  "source_revision_at_download": "21a5633873b6a120296cce3e2df9d5550074f4a3",
+  "source_access": "dataset viewer rows API; exact fetched records preserved and hashed",
+  "downloaded_at": "2026-09-20T03:42:36.903218+00:00",
+  "split": "train",
+  "urls": [
+    "https://datasets-server.huggingface.co/rows?dataset=EleutherAI%2Fhendrycks_math&config=algebra&split=train&offset=0&length=100",
+    "https://datasets-server.huggingface.co/rows?dataset=EleutherAI%2Fhendrycks_math&config=number_theory&split=train&offset=0&length=100",
+    "https://datasets-server.huggingface.co/rows?dataset=EleutherAI%2Fhendrycks_math&config=counting_and_probability&split=train&offset=0&length=100"
+  ],
+  "task_ids": [
+    "algebra/train/26",
+    "algebra/train/46",
+    "number_theory/train/99",
+    "number_theory/train/84",
+    "counting_and_probability/train/86",
+    "counting_and_probability/train/46",
+    "algebra/train/32",
+    "algebra/train/24",
+    "number_theory/train/62",
+    "number_theory/train/76",
+    "counting_and_probability/train/55",
+    "counting_and_probability/train/90"
+  ],
+  "repeat_ids": [
+    "number_theory/train/84",
+    "algebra/train/26",
+    "counting_and_probability/train/90",
+    "algebra/train/46"
+  ],
+  "tasks_sha256": "01459b0639b0e54731122404d485a7561d4998f41206221bb88e664a031e3e2f",
+  "config": {
+    "authoritative_document": "NicheFlow_3.4_技术方案.docx",
+    "purpose": "Check execution, objective feedback and preliminary workflow complementarity only",
+    "dataset": "EleutherAI/hendrycks_math",
+    "split": "train",
+    "subjects": [
+      "algebra",
+      "number_theory",
+      "counting_and_probability"
+    ],
+    "levels": [
+      "Level 3",
+      "Level 4"
+    ],
+    "per_stratum": 2,
+    "sample_seed": 20260920,
+    "repeat_count": 4,
+    "model_id": "Qwen/Qwen2.5-7B-Instruct-AWQ",
+    "temperature": 0.7,
+    "top_p": 0.8,
+    "max_new_tokens": 1536,
+    "max_context_tokens": 8192,
+    "generation_seed": 73129,
+    "max_workflow_executions": 48,
+    "notes": [
+      "Sampling and decoding values are probe implementation choices, not hyperparameters specified in the original document.",
+      "The local Qwen 7B 4-bit branch is exercised; heterogeneous-model benefits, search, routing and scheduling remain untested.",
+      "The original 100-niche definition and three algorithms are neither replaced nor claimed implemented.",
+      "Only rational scalar answers without diagram dependence are sampled, before any model output is observed."
+    ]
+  }
+}

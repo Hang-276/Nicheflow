@@ -1,0 +1,46 @@
+{
+  "nodes": [
+    {
+      "id": "a",
+      "operator": "Generate",
+      "prompt": "Produce a concise plan for solving the supplied task, including key steps and considerations. Do not solve the task. Return only the plan.",
+      "inputs": [],
+      "model": "strong",
+      "temperature": 0.7,
+      "source": null,
+      "signature": null,
+      "subgroup": null
+    },
+    {
+      "id": "review",
+      "operator": "Review&Revise",
+      "prompt": "Review the plan and suggest improvements for clarity, completeness, and feasibility. Return the improved plan only.",
+      "inputs": [
+        "a"
+      ],
+      "model": "local",
+      "temperature": 0.3,
+      "source": null,
+      "signature": null,
+      "subgroup": null
+    },
+    {
+      "id": "final",
+      "operator": "Generate",
+      "prompt": "Using the improved plan, solve the supplied task. Follow the output contract exactly. Return only the final answer.",
+      "inputs": [
+        "review"
+      ],
+      "model": "strong",
+      "temperature": 0.5,
+      "source": null,
+      "signature": null,
+      "subgroup": null
+    }
+  ],
+  "output": "final",
+  "parents": [
+    "834309f9aeae2e0b4cf59fd84a34fa0a4c0ae63d8979970c2eaf8d3700c97604"
+  ],
+  "topology_primitive": null
+}

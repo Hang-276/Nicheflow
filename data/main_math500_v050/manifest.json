@@ -1,0 +1,752 @@
+{
+  "schema": "nicheflow_data_pack_v1",
+  "protocol": "main_math500_v1",
+  "input_protocol": "math_verbatim_with_inline_asymptote_v1",
+  "sampling_seed": 20260921,
+  "development_per_subject_level": 2,
+  "calibration_per_subject_level": 8,
+  "selection_before_model_calls": true,
+  "evaluation_exclusions": [],
+  "source_files": [
+    {
+      "path": "data/source_math_v041/math500.jsonl",
+      "url": "https://huggingface.co/datasets/HuggingFaceH4/MATH-500/resolve/6e4ed1a2a79af7d8630a6b768ec859cb5af4d3be/test.jsonl",
+      "bytes": 446564,
+      "sha256": "35dc41080a3680858b27fa7e0533d2d547825316fc5dafe5d316f4ccc5a06132"
+    },
+    {
+      "path": "data/source_math_v041/algebra.parquet",
+      "url": "https://huggingface.co/datasets/EleutherAI/hendrycks_math/resolve/21a5633873b6a120296cce3e2df9d5550074f4a3/algebra/train-00000-of-00001.parquet",
+      "bytes": 505186,
+      "sha256": "73347f5b55869f21ff094361025dbd12d291e971aa4d72142eacee10438e449f"
+    },
+    {
+      "path": "data/source_math_v041/counting_and_probability.parquet",
+      "url": "https://huggingface.co/datasets/EleutherAI/hendrycks_math/resolve/21a5633873b6a120296cce3e2df9d5550074f4a3/counting_and_probability/train-00000-of-00001.parquet",
+      "bytes": 329354,
+      "sha256": "d37ae017930df41678edee50dcde18c17fb06afaff9eb505c1b95f1002bfcb31"
+    },
+    {
+      "path": "data/source_math_v041/geometry.parquet",
+      "url": "https://huggingface.co/datasets/EleutherAI/hendrycks_math/resolve/21a5633873b6a120296cce3e2df9d5550074f4a3/geometry/train-00000-of-00001.parquet",
+      "bytes": 549388,
+      "sha256": "9dbf5e5b55499e696e0ba72da9d85d4f0be3acbf7eaa6cb014b0fc78bb63784f"
+    },
+    {
+      "path": "data/source_math_v041/intermediate_algebra.parquet",
+      "url": "https://huggingface.co/datasets/EleutherAI/hendrycks_math/resolve/21a5633873b6a120296cce3e2df9d5550074f4a3/intermediate_algebra/train-00000-of-00001.parquet",
+      "bytes": 575154,
+      "sha256": "0c87f3798ebdfb915b1f9b6fc13c1a8d064c3cb91631ccbe85b83ed5d71150f6"
+    },
+    {
+      "path": "data/source_math_v041/number_theory.parquet",
+      "url": "https://huggingface.co/datasets/EleutherAI/hendrycks_math/resolve/21a5633873b6a120296cce3e2df9d5550074f4a3/number_theory/train-00000-of-00001.parquet",
+      "bytes": 308653,
+      "sha256": "81c08649149b39811f2d1d7ddf5dfccf6c4c8044a2e169cfb24db09160c941f4"
+    },
+    {
+      "path": "data/source_math_v041/prealgebra.parquet",
+      "url": "https://huggingface.co/datasets/EleutherAI/hendrycks_math/resolve/21a5633873b6a120296cce3e2df9d5550074f4a3/prealgebra/train-00000-of-00001.parquet",
+      "bytes": 383626,
+      "sha256": "765b526fb5c0b8385cb7be2c16bf4f6f28cf71f2bc15c826abfbb5fa7f8616cc"
+    },
+    {
+      "path": "data/source_math_v041/precalculus.parquet",
+      "url": "https://huggingface.co/datasets/EleutherAI/hendrycks_math/resolve/21a5633873b6a120296cce3e2df9d5550074f4a3/precalculus/train-00000-of-00001.parquet",
+      "bytes": 353745,
+      "sha256": "28bb1ff95525c8d32521509bef91de76339659f5467a381e6e8deea204538f0e"
+    }
+  ],
+  "exclusions_from_learning_pool": [
+    {
+      "source_id": "algebra/2",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "algebra/24",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "algebra/26",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "algebra/29",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "algebra/32",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "algebra/36",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "algebra/37",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "algebra/38",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "algebra/42",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "algebra/44",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "algebra/45",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "algebra/46",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "algebra/60",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "algebra/78",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "algebra/80",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "algebra/89",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "algebra/268",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "algebra/303",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "algebra/313",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "algebra/370",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "algebra/482",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "algebra/681",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "algebra/888",
+      "reason": "reference_missing_or_empty_braced_box"
+    },
+    {
+      "source_id": "algebra/946",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "algebra/959",
+      "reason": "duplicate_training_question"
+    },
+    {
+      "source_id": "algebra/1011",
+      "reason": "reference_missing_or_empty_braced_box"
+    },
+    {
+      "source_id": "algebra/1056",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "algebra/1142",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "algebra/1208",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "algebra/1569",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "algebra/1597",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "algebra/1739",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "counting_and_probability/6",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "counting_and_probability/8",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "counting_and_probability/11",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "counting_and_probability/12",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "counting_and_probability/15",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "counting_and_probability/23",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "counting_and_probability/40",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "counting_and_probability/46",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "counting_and_probability/55",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "counting_and_probability/64",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "counting_and_probability/68",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "counting_and_probability/75",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "counting_and_probability/82",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "counting_and_probability/84",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "counting_and_probability/86",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "counting_and_probability/90",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "counting_and_probability/101",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "counting_and_probability/147",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "counting_and_probability/151",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "counting_and_probability/172",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "counting_and_probability/178",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "counting_and_probability/217",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "counting_and_probability/298",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "counting_and_probability/327",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "counting_and_probability/374",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "counting_and_probability/417",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "counting_and_probability/506",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "counting_and_probability/510",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "counting_and_probability/713",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "geometry/7",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "geometry/61",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "geometry/73",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "geometry/76",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "geometry/149",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "geometry/184",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "geometry/258",
+      "reason": "source_difficulty_unspecified"
+    },
+    {
+      "source_id": "geometry/285",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "geometry/317",
+      "reason": "source_difficulty_unspecified"
+    },
+    {
+      "source_id": "geometry/345",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "geometry/350",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "geometry/359",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "geometry/362",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "geometry/523",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "geometry/682",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "geometry/832",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "geometry/864",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "intermediate_algebra/24",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "intermediate_algebra/30",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "intermediate_algebra/69",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "intermediate_algebra/177",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "intermediate_algebra/321",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "intermediate_algebra/360",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "intermediate_algebra/495",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "intermediate_algebra/528",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "intermediate_algebra/529",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "intermediate_algebra/576",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "intermediate_algebra/1020",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "intermediate_algebra/1038",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "intermediate_algebra/1078",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "intermediate_algebra/1095",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "intermediate_algebra/1257",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "number_theory/4",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "number_theory/5",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "number_theory/7",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "number_theory/12",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "number_theory/13",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "number_theory/26",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "number_theory/34",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "number_theory/53",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "number_theory/62",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "number_theory/71",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "number_theory/76",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "number_theory/80",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "number_theory/81",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "number_theory/84",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "number_theory/87",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "number_theory/88",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "number_theory/98",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "number_theory/99",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "number_theory/130",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "number_theory/178",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "number_theory/190",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "number_theory/209",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "number_theory/216",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "number_theory/252",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "number_theory/256",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "number_theory/317",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "number_theory/532",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "number_theory/607",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "number_theory/661",
+      "reason": "reference_missing_or_empty_braced_box"
+    },
+    {
+      "source_id": "number_theory/663",
+      "reason": "reference_missing_or_empty_braced_box"
+    },
+    {
+      "source_id": "number_theory/698",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "prealgebra/46",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "prealgebra/75",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "prealgebra/200",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "prealgebra/235",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "prealgebra/261",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "prealgebra/347",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "prealgebra/442",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "prealgebra/617",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "prealgebra/659",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "prealgebra/733",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "prealgebra/894",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "prealgebra/930",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "prealgebra/988",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "prealgebra/1063",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "prealgebra/1182",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "precalculus/27",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "precalculus/73",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "precalculus/164",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "precalculus/199",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "precalculus/237",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "precalculus/249",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "precalculus/332",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "precalculus/365",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "precalculus/368",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "precalculus/374",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "precalculus/568",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "precalculus/579",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "precalculus/660",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "precalculus/711",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "precalculus/733",
+      "reason": "held_out_or_previous_probe_overlap"
+    }
+  ],
+  "partitions": {
+    "development": {
+      "path": "development.jsonl",
+      "count": 70,
+      "sha256": "f13c5f116a945384a1fb0ca3d4b0958e2dea19b468159308400b18df8ee065fe",
+      "distribution": {
+        "subjects": {
+          "algebra": 10,
+          "counting_and_probability": 10,
+          "geometry": 10,
+          "intermediate_algebra": 10,
+          "number_theory": 10,
+          "prealgebra": 10,
+          "precalculus": 10
+        },
+        "levels": {
+          "1": 14,
+          "2": 14,
+          "3": 14,
+          "4": 14,
+          "5": 14
+        },
+        "inline_asymptote": 6
+      }
+    },
+    "calibration": {
+      "path": "calibration.jsonl",
+      "count": 280,
+      "sha256": "007eb00f8291e173ca3d9765e1b8dd490fcdf1a7f2bded89845917d4ad952e2e",
+      "distribution": {
+        "subjects": {
+          "algebra": 40,
+          "counting_and_probability": 40,
+          "geometry": 40,
+          "intermediate_algebra": 40,
+          "number_theory": 40,
+          "prealgebra": 40,
+          "precalculus": 40
+        },
+        "levels": {
+          "1": 56,
+          "2": 56,
+          "3": 56,
+          "4": 56,
+          "5": 56
+        },
+        "inline_asymptote": 27
+      }
+    },
+    "evaluation": {
+      "path": "evaluation.jsonl",
+      "count": 500,
+      "sha256": "7f433910b34ffc15fe5ec35e14ed85600b47dc43f66e6e652aaee888123ed9bd",
+      "distribution": {
+        "subjects": {
+          "algebra": 124,
+          "counting_and_probability": 38,
+          "geometry": 41,
+          "intermediate_algebra": 97,
+          "number_theory": 62,
+          "prealgebra": 82,
+          "precalculus": 56
+        },
+        "levels": {
+          "1": 43,
+          "2": 90,
+          "3": 105,
+          "4": 128,
+          "5": 134
+        },
+        "inline_asymptote": 42
+      }
+    }
+  }
+}

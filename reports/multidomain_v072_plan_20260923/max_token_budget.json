@@ -1,0 +1,102 @@
+{
+  "status": "proposal_only_not_launched",
+  "date": "2026-09-23",
+  "domains": 3,
+  "distinct_tasks_per_domain": 200,
+  "split_per_domain": {
+    "development": 40,
+    "screening": 20,
+    "calibration": 40,
+    "final_evaluation": 100
+  },
+  "search_rounds_per_domain": 5,
+  "new_candidates_per_round_per_domain": 2,
+  "assumption": "Each workflow invokes Max at most once; all allowed workflow executions pessimistically charged one Max call. Token lengths are planning assumptions, not measurements outside math.",
+  "profiles": {
+    "math": {
+      "single_input": 800,
+      "single_output": 1500,
+      "workflow_input": 2500,
+      "workflow_output": 1800
+    },
+    "code": {
+      "single_input": 1200,
+      "single_output": 2000,
+      "workflow_input": 3500,
+      "workflow_output": 2200
+    },
+    "qa": {
+      "single_input": 4500,
+      "single_output": 800,
+      "workflow_input": 6500,
+      "workflow_output": 1200
+    }
+  },
+  "stages": [
+    {
+      "stage": "preflight",
+      "max_call_ceiling": 30,
+      "estimated_input_tokens": 90000,
+      "estimated_output_tokens": 30000,
+      "estimated_total_tokens": 120000
+    },
+    {
+      "stage": "single_model_matrix",
+      "max_call_ceiling": 1200,
+      "estimated_input_tokens": 2600000,
+      "estimated_output_tokens": 1720000,
+      "estimated_total_tokens": 4320000
+    },
+    {
+      "stage": "mixed_seed_evaluation",
+      "max_call_ceiling": 180,
+      "estimated_input_tokens": 750000,
+      "estimated_output_tokens": 312000,
+      "estimated_total_tokens": 1062000
+    },
+    {
+      "stage": "five_search_rounds",
+      "max_call_ceiling": 600,
+      "estimated_input_tokens": 2500000,
+      "estimated_output_tokens": 1040000,
+      "estimated_total_tokens": 3540000
+    },
+    {
+      "stage": "independent_screening",
+      "max_call_ceiling": 360,
+      "estimated_input_tokens": 1500000,
+      "estimated_output_tokens": 624000,
+      "estimated_total_tokens": 2124000
+    },
+    {
+      "stage": "router_calibration",
+      "max_call_ceiling": 480,
+      "estimated_input_tokens": 2000000,
+      "estimated_output_tokens": 832000,
+      "estimated_total_tokens": 2832000
+    },
+    {
+      "stage": "two_workflows_final_evaluation",
+      "max_call_ceiling": 1200,
+      "estimated_input_tokens": 5000000,
+      "estimated_output_tokens": 2080000,
+      "estimated_total_tokens": 7080000
+    }
+  ],
+  "total": {
+    "max_call_ceiling": 4050,
+    "estimated_input_tokens": 14440000,
+    "estimated_output_tokens": 6638000,
+    "estimated_total_tokens": 21078000
+  },
+  "proposed_max_token_budget": {
+    "input_tokens": 20000000,
+    "output_tokens": 10000000,
+    "total_tokens": 30000000,
+    "hard_cap_requires_inflight_reservation": true
+  },
+  "max_used_for_workflow_proposals": false,
+  "optimizer": "fixed DeepSeek Flash; separate non-Max accounting",
+  "included": "Baseline calls on all four splits, repeated single-model outputs, mixed seeds, candidate execution, screening, calibration, final evaluation, limited readiness allowance.",
+  "excluded": "Other models, local compute, unplanned reruns, hidden additional retries, Max reasoning modes, extra search seeds or ablations."
+}

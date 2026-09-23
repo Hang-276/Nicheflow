@@ -1,0 +1,3227 @@
+{
+  "seed": 20260923071,
+  "count": 42,
+  "tasks_sha256": "ba901650ce8bf0f59350f2d6c696339cd3d52ba8a4672c851ff3b394feb80eb4",
+  "distribution": {
+    "subjects": {
+      "algebra": 6,
+      "counting_and_probability": 6,
+      "geometry": 6,
+      "intermediate_algebra": 6,
+      "number_theory": 6,
+      "prealgebra": 6,
+      "precalculus": 6
+    },
+    "levels": {
+      "4": 21,
+      "5": 21
+    },
+    "inline_asymptote": 5
+  },
+  "excluded_unique_questions": 1277,
+  "excluded_prior_files": {
+    "data/benchmarks/mbpp_smoke/tasks.jsonl": "44f6e5bb528f06164240ee9daee7192be7807dc3ea375bc4cb16a148c76ca2a2",
+    "data/fixed_validation_v060/validation.jsonl": "a032c525b698df8f17317d044be2ab94374774724abef4c3273822c47f112fe3",
+    "data/main_math500_v050/calibration.jsonl": "007eb00f8291e173ca3d9765e1b8dd490fcdf1a7f2bded89845917d4ad952e2e",
+    "data/main_math500_v050/development.jsonl": "f13c5f116a945384a1fb0ca3d4b0958e2dea19b468159308400b18df8ee065fe",
+    "data/main_math500_v050/evaluation.jsonl": "7f433910b34ffc15fe5ec35e14ed85600b47dc43f66e6e652aaee888123ed9bd",
+    "data/main_math500_v1/calibration.jsonl": "a9f6f4412ee6730b15e0f4ba4b2121f66025151a606379b6af67002128037550",
+    "data/main_math500_v1/development.jsonl": "10e2d9237a9a7d8e4510270e2b6b57d21de681b48293293aafb68a57d4ad4eed",
+    "data/main_math500_v1/evaluation.jsonl": "7f433910b34ffc15fe5ec35e14ed85600b47dc43f66e6e652aaee888123ed9bd",
+    "data/main_math_learning_v1/calibration.jsonl": "0a2674a8e83b37375a071b4e83454c003dd359587f1666b3ec85569591d7b39f",
+    "data/main_math_learning_v1/development.jsonl": "f4a5a03f5b617919ec64b4b25d015bddd24f51f7b5934165e9fbb2dfba4e7d31",
+    "data/model_selection_v070/validation.jsonl": "cd5e002cb1e7fea4505ddfc0bd2c1461ca392d12febe5e69f0d2e66c19cb7cec",
+    "data/tasks.jsonl": "01459b0639b0e54731122404d485a7561d4998f41206221bb88e664a031e3e2f"
+  },
+  "source_files": [
+    {
+      "path": "data/source_math_v041/math500.jsonl",
+      "url": "https://huggingface.co/datasets/HuggingFaceH4/MATH-500/resolve/6e4ed1a2a79af7d8630a6b768ec859cb5af4d3be/test.jsonl",
+      "bytes": 446564,
+      "sha256": "35dc41080a3680858b27fa7e0533d2d547825316fc5dafe5d316f4ccc5a06132"
+    },
+    {
+      "path": "data/source_math_v041/algebra.parquet",
+      "url": "https://huggingface.co/datasets/EleutherAI/hendrycks_math/resolve/21a5633873b6a120296cce3e2df9d5550074f4a3/algebra/train-00000-of-00001.parquet",
+      "bytes": 505186,
+      "sha256": "73347f5b55869f21ff094361025dbd12d291e971aa4d72142eacee10438e449f"
+    },
+    {
+      "path": "data/source_math_v041/counting_and_probability.parquet",
+      "url": "https://huggingface.co/datasets/EleutherAI/hendrycks_math/resolve/21a5633873b6a120296cce3e2df9d5550074f4a3/counting_and_probability/train-00000-of-00001.parquet",
+      "bytes": 329354,
+      "sha256": "d37ae017930df41678edee50dcde18c17fb06afaff9eb505c1b95f1002bfcb31"
+    },
+    {
+      "path": "data/source_math_v041/geometry.parquet",
+      "url": "https://huggingface.co/datasets/EleutherAI/hendrycks_math/resolve/21a5633873b6a120296cce3e2df9d5550074f4a3/geometry/train-00000-of-00001.parquet",
+      "bytes": 549388,
+      "sha256": "9dbf5e5b55499e696e0ba72da9d85d4f0be3acbf7eaa6cb014b0fc78bb63784f"
+    },
+    {
+      "path": "data/source_math_v041/intermediate_algebra.parquet",
+      "url": "https://huggingface.co/datasets/EleutherAI/hendrycks_math/resolve/21a5633873b6a120296cce3e2df9d5550074f4a3/intermediate_algebra/train-00000-of-00001.parquet",
+      "bytes": 575154,
+      "sha256": "0c87f3798ebdfb915b1f9b6fc13c1a8d064c3cb91631ccbe85b83ed5d71150f6"
+    },
+    {
+      "path": "data/source_math_v041/number_theory.parquet",
+      "url": "https://huggingface.co/datasets/EleutherAI/hendrycks_math/resolve/21a5633873b6a120296cce3e2df9d5550074f4a3/number_theory/train-00000-of-00001.parquet",
+      "bytes": 308653,
+      "sha256": "81c08649149b39811f2d1d7ddf5dfccf6c4c8044a2e169cfb24db09160c941f4"
+    },
+    {
+      "path": "data/source_math_v041/prealgebra.parquet",
+      "url": "https://huggingface.co/datasets/EleutherAI/hendrycks_math/resolve/21a5633873b6a120296cce3e2df9d5550074f4a3/prealgebra/train-00000-of-00001.parquet",
+      "bytes": 383626,
+      "sha256": "765b526fb5c0b8385cb7be2c16bf4f6f28cf71f2bc15c826abfbb5fa7f8616cc"
+    },
+    {
+      "path": "data/source_math_v041/precalculus.parquet",
+      "url": "https://huggingface.co/datasets/EleutherAI/hendrycks_math/resolve/21a5633873b6a120296cce3e2df9d5550074f4a3/precalculus/train-00000-of-00001.parquet",
+      "bytes": 353745,
+      "sha256": "28bb1ff95525c8d32521509bef91de76339659f5467a381e6e8deea204538f0e"
+    }
+  ],
+  "selection_before_model_calls": true,
+  "selection_rule": "3 per subject and level 4/5, independent of any model scores",
+  "pilot_not_final_test": true,
+  "exclusions": [
+    {
+      "source_id": "algebra/2",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "algebra/24",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "algebra/26",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "algebra/29",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "algebra/32",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "algebra/36",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "algebra/37",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "algebra/38",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "algebra/42",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "algebra/44",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "algebra/45",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "algebra/46",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "algebra/60",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "algebra/64",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "algebra/78",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "algebra/80",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "algebra/87",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "algebra/89",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "algebra/95",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "algebra/101",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "algebra/131",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "algebra/148",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "algebra/154",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "algebra/156",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "algebra/227",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "algebra/267",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "algebra/268",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "algebra/303",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "algebra/313",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "algebra/336",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "algebra/347",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "algebra/370",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "algebra/376",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "algebra/378",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "algebra/403",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "algebra/418",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "algebra/446",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "algebra/482",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "algebra/484",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "algebra/485",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "algebra/490",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "algebra/526",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "algebra/535",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "algebra/542",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "algebra/543",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "algebra/544",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "algebra/551",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "algebra/562",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "algebra/570",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "algebra/577",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "algebra/589",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "algebra/599",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "algebra/648",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "algebra/681",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "algebra/684",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "algebra/712",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "algebra/722",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "algebra/766",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "algebra/772",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "algebra/792",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "algebra/847",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "algebra/853",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "algebra/888",
+      "reason": "reference_missing_or_empty_braced_box"
+    },
+    {
+      "source_id": "algebra/913",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "algebra/934",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "algebra/944",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "algebra/946",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "algebra/959",
+      "reason": "duplicate_training_question"
+    },
+    {
+      "source_id": "algebra/993",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "algebra/1005",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "algebra/1011",
+      "reason": "reference_missing_or_empty_braced_box"
+    },
+    {
+      "source_id": "algebra/1012",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "algebra/1015",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "algebra/1028",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "algebra/1050",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "algebra/1056",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "algebra/1059",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "algebra/1080",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "algebra/1106",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "algebra/1110",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "algebra/1126",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "algebra/1132",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "algebra/1133",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "algebra/1134",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "algebra/1142",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "algebra/1169",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "algebra/1182",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "algebra/1190",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "algebra/1208",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "algebra/1222",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "algebra/1240",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "algebra/1257",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "algebra/1305",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "algebra/1307",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "algebra/1312",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "algebra/1331",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "algebra/1355",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "algebra/1365",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "algebra/1376",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "algebra/1388",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "algebra/1393",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "algebra/1427",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "algebra/1441",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "algebra/1498",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "algebra/1529",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "algebra/1543",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "algebra/1547",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "algebra/1556",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "algebra/1569",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "algebra/1582",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "algebra/1588",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "algebra/1592",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "algebra/1597",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "algebra/1620",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "algebra/1668",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "algebra/1671",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "algebra/1672",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "algebra/1681",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "algebra/1726",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "algebra/1733",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "algebra/1739",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "algebra/1743",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "counting_and_probability/6",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "counting_and_probability/8",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "counting_and_probability/11",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "counting_and_probability/12",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "counting_and_probability/14",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "counting_and_probability/15",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "counting_and_probability/17",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "counting_and_probability/19",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "counting_and_probability/23",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "counting_and_probability/26",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "counting_and_probability/36",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "counting_and_probability/40",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "counting_and_probability/46",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "counting_and_probability/53",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "counting_and_probability/55",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "counting_and_probability/62",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "counting_and_probability/64",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "counting_and_probability/67",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "counting_and_probability/68",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "counting_and_probability/75",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "counting_and_probability/82",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "counting_and_probability/84",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "counting_and_probability/86",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "counting_and_probability/89",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "counting_and_probability/90",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "counting_and_probability/101",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "counting_and_probability/112",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "counting_and_probability/114",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "counting_and_probability/120",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "counting_and_probability/128",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "counting_and_probability/132",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "counting_and_probability/139",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "counting_and_probability/140",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "counting_and_probability/141",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "counting_and_probability/146",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "counting_and_probability/147",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "counting_and_probability/151",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "counting_and_probability/160",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "counting_and_probability/170",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "counting_and_probability/172",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "counting_and_probability/177",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "counting_and_probability/178",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "counting_and_probability/184",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "counting_and_probability/189",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "counting_and_probability/217",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "counting_and_probability/218",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "counting_and_probability/223",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "counting_and_probability/235",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "counting_and_probability/236",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "counting_and_probability/248",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "counting_and_probability/262",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "counting_and_probability/266",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "counting_and_probability/271",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "counting_and_probability/274",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "counting_and_probability/276",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "counting_and_probability/279",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "counting_and_probability/285",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "counting_and_probability/288",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "counting_and_probability/292",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "counting_and_probability/295",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "counting_and_probability/297",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "counting_and_probability/298",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "counting_and_probability/318",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "counting_and_probability/319",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "counting_and_probability/322",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "counting_and_probability/327",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "counting_and_probability/347",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "counting_and_probability/353",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "counting_and_probability/374",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "counting_and_probability/385",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "counting_and_probability/393",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "counting_and_probability/400",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "counting_and_probability/413",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "counting_and_probability/417",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "counting_and_probability/418",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "counting_and_probability/427",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "counting_and_probability/450",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "counting_and_probability/454",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "counting_and_probability/469",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "counting_and_probability/480",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "counting_and_probability/485",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "counting_and_probability/488",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "counting_and_probability/505",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "counting_and_probability/506",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "counting_and_probability/507",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "counting_and_probability/510",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "counting_and_probability/513",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "counting_and_probability/514",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "counting_and_probability/531",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "counting_and_probability/556",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "counting_and_probability/564",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "counting_and_probability/578",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "counting_and_probability/588",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "counting_and_probability/594",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "counting_and_probability/621",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "counting_and_probability/622",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "counting_and_probability/625",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "counting_and_probability/636",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "counting_and_probability/641",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "counting_and_probability/642",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "counting_and_probability/649",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "counting_and_probability/653",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "counting_and_probability/662",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "counting_and_probability/667",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "counting_and_probability/678",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "counting_and_probability/697",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "counting_and_probability/713",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "counting_and_probability/714",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "counting_and_probability/721",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "counting_and_probability/726",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "counting_and_probability/730",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "counting_and_probability/732",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "counting_and_probability/734",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "counting_and_probability/735",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "counting_and_probability/736",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "counting_and_probability/737",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "counting_and_probability/741",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "counting_and_probability/754",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "counting_and_probability/762",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "geometry/7",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "geometry/8",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "geometry/54",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "geometry/61",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "geometry/63",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "geometry/73",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "geometry/76",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "geometry/97",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "geometry/98",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "geometry/100",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "geometry/112",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "geometry/115",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "geometry/119",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "geometry/120",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "geometry/124",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "geometry/131",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "geometry/133",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "geometry/146",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "geometry/149",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "geometry/150",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "geometry/154",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "geometry/172",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "geometry/184",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "geometry/185",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "geometry/186",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "geometry/193",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "geometry/205",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "geometry/207",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "geometry/213",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "geometry/230",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "geometry/231",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "geometry/232",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "geometry/237",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "geometry/244",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "geometry/245",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "geometry/248",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "geometry/251",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "geometry/253",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "geometry/258",
+      "reason": "source_difficulty_unspecified"
+    },
+    {
+      "source_id": "geometry/259",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "geometry/264",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "geometry/270",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "geometry/273",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "geometry/285",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "geometry/307",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "geometry/309",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "geometry/310",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "geometry/312",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "geometry/317",
+      "reason": "source_difficulty_unspecified"
+    },
+    {
+      "source_id": "geometry/322",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "geometry/345",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "geometry/350",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "geometry/356",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "geometry/359",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "geometry/362",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "geometry/367",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "geometry/368",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "geometry/369",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "geometry/375",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "geometry/377",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "geometry/391",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "geometry/400",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "geometry/402",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "geometry/404",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "geometry/405",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "geometry/445",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "geometry/447",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "geometry/476",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "geometry/477",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "geometry/483",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "geometry/499",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "geometry/505",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "geometry/523",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "geometry/550",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "geometry/582",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "geometry/591",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "geometry/615",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "geometry/636",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "geometry/650",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "geometry/654",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "geometry/662",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "geometry/670",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "geometry/671",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "geometry/682",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "geometry/683",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "geometry/684",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "geometry/699",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "geometry/704",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "geometry/708",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "geometry/715",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "geometry/717",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "geometry/730",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "geometry/732",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "geometry/740",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "geometry/750",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "geometry/752",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "geometry/754",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "geometry/782",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "geometry/787",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "geometry/800",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "geometry/806",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "geometry/809",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "geometry/816",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "geometry/827",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "geometry/832",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "geometry/853",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "geometry/864",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "intermediate_algebra/5",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "intermediate_algebra/11",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "intermediate_algebra/24",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "intermediate_algebra/30",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "intermediate_algebra/69",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "intermediate_algebra/126",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "intermediate_algebra/139",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "intermediate_algebra/140",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "intermediate_algebra/151",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "intermediate_algebra/155",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "intermediate_algebra/175",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "intermediate_algebra/177",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "intermediate_algebra/186",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "intermediate_algebra/187",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "intermediate_algebra/189",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "intermediate_algebra/193",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "intermediate_algebra/198",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "intermediate_algebra/204",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "intermediate_algebra/206",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "intermediate_algebra/210",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "intermediate_algebra/211",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "intermediate_algebra/212",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "intermediate_algebra/213",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "intermediate_algebra/215",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "intermediate_algebra/220",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "intermediate_algebra/237",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "intermediate_algebra/239",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "intermediate_algebra/256",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "intermediate_algebra/263",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "intermediate_algebra/272",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "intermediate_algebra/300",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "intermediate_algebra/321",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "intermediate_algebra/324",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "intermediate_algebra/333",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "intermediate_algebra/334",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "intermediate_algebra/336",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "intermediate_algebra/360",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "intermediate_algebra/361",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "intermediate_algebra/364",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "intermediate_algebra/381",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "intermediate_algebra/387",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "intermediate_algebra/399",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "intermediate_algebra/402",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "intermediate_algebra/422",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "intermediate_algebra/438",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "intermediate_algebra/458",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "intermediate_algebra/461",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "intermediate_algebra/464",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "intermediate_algebra/471",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "intermediate_algebra/495",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "intermediate_algebra/502",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "intermediate_algebra/512",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "intermediate_algebra/528",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "intermediate_algebra/529",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "intermediate_algebra/532",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "intermediate_algebra/539",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "intermediate_algebra/548",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "intermediate_algebra/557",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "intermediate_algebra/566",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "intermediate_algebra/576",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "intermediate_algebra/580",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "intermediate_algebra/603",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "intermediate_algebra/668",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "intermediate_algebra/675",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "intermediate_algebra/719",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "intermediate_algebra/730",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "intermediate_algebra/738",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "intermediate_algebra/741",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "intermediate_algebra/749",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "intermediate_algebra/750",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "intermediate_algebra/779",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "intermediate_algebra/785",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "intermediate_algebra/792",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "intermediate_algebra/849",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "intermediate_algebra/858",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "intermediate_algebra/870",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "intermediate_algebra/874",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "intermediate_algebra/889",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "intermediate_algebra/891",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "intermediate_algebra/895",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "intermediate_algebra/902",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "intermediate_algebra/959",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "intermediate_algebra/960",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "intermediate_algebra/979",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "intermediate_algebra/1002",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "intermediate_algebra/1014",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "intermediate_algebra/1017",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "intermediate_algebra/1020",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "intermediate_algebra/1022",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "intermediate_algebra/1025",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "intermediate_algebra/1038",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "intermediate_algebra/1045",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "intermediate_algebra/1049",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "intermediate_algebra/1078",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "intermediate_algebra/1095",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "intermediate_algebra/1109",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "intermediate_algebra/1110",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "intermediate_algebra/1122",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "intermediate_algebra/1186",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "intermediate_algebra/1236",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "intermediate_algebra/1238",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "intermediate_algebra/1246",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "intermediate_algebra/1257",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "intermediate_algebra/1271",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "intermediate_algebra/1293",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "number_theory/4",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "number_theory/5",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "number_theory/7",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "number_theory/12",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "number_theory/13",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "number_theory/19",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "number_theory/24",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "number_theory/26",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "number_theory/27",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "number_theory/29",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "number_theory/34",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "number_theory/44",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "number_theory/48",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "number_theory/51",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "number_theory/53",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "number_theory/57",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "number_theory/58",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "number_theory/60",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "number_theory/61",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "number_theory/62",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "number_theory/68",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "number_theory/71",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "number_theory/76",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "number_theory/80",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "number_theory/81",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "number_theory/82",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "number_theory/84",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "number_theory/85",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "number_theory/87",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "number_theory/88",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "number_theory/98",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "number_theory/99",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "number_theory/130",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "number_theory/147",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "number_theory/161",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "number_theory/178",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "number_theory/190",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "number_theory/195",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "number_theory/209",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "number_theory/216",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "number_theory/220",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "number_theory/233",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "number_theory/235",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "number_theory/237",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "number_theory/249",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "number_theory/252",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "number_theory/256",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "number_theory/267",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "number_theory/277",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "number_theory/293",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "number_theory/302",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "number_theory/311",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "number_theory/317",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "number_theory/325",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "number_theory/331",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "number_theory/336",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "number_theory/348",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "number_theory/363",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "number_theory/371",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "number_theory/375",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "number_theory/376",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "number_theory/387",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "number_theory/388",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "number_theory/396",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "number_theory/399",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "number_theory/404",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "number_theory/407",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "number_theory/423",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "number_theory/427",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "number_theory/428",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "number_theory/436",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "number_theory/438",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "number_theory/441",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "number_theory/444",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "number_theory/445",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "number_theory/451",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "number_theory/452",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "number_theory/455",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "number_theory/467",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "number_theory/505",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "number_theory/507",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "number_theory/514",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "number_theory/526",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "number_theory/532",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "number_theory/533",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "number_theory/552",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "number_theory/573",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "number_theory/607",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "number_theory/614",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "number_theory/619",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "number_theory/639",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "number_theory/661",
+      "reason": "reference_missing_or_empty_braced_box"
+    },
+    {
+      "source_id": "number_theory/663",
+      "reason": "reference_missing_or_empty_braced_box"
+    },
+    {
+      "source_id": "number_theory/674",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "number_theory/692",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "number_theory/698",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "number_theory/706",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "number_theory/709",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "number_theory/717",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "number_theory/719",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "number_theory/724",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "number_theory/729",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "number_theory/749",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "number_theory/753",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "number_theory/756",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "number_theory/774",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "number_theory/781",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "number_theory/785",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "number_theory/788",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "number_theory/803",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "number_theory/808",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "number_theory/812",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "number_theory/813",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "number_theory/830",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "number_theory/832",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "number_theory/833",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "number_theory/841",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "number_theory/844",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "number_theory/847",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "number_theory/854",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "number_theory/856",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "prealgebra/4",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "prealgebra/6",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "prealgebra/16",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "prealgebra/31",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "prealgebra/34",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "prealgebra/39",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "prealgebra/46",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "prealgebra/72",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "prealgebra/75",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "prealgebra/85",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "prealgebra/87",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "prealgebra/94",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "prealgebra/141",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "prealgebra/149",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "prealgebra/154",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "prealgebra/167",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "prealgebra/196",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "prealgebra/200",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "prealgebra/215",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "prealgebra/235",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "prealgebra/250",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "prealgebra/258",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "prealgebra/261",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "prealgebra/278",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "prealgebra/281",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "prealgebra/300",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "prealgebra/301",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "prealgebra/307",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "prealgebra/320",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "prealgebra/327",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "prealgebra/329",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "prealgebra/347",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "prealgebra/351",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "prealgebra/395",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "prealgebra/397",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "prealgebra/408",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "prealgebra/415",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "prealgebra/420",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "prealgebra/431",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "prealgebra/442",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "prealgebra/450",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "prealgebra/455",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "prealgebra/457",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "prealgebra/461",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "prealgebra/476",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "prealgebra/504",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "prealgebra/569",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "prealgebra/575",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "prealgebra/605",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "prealgebra/617",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "prealgebra/620",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "prealgebra/645",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "prealgebra/657",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "prealgebra/659",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "prealgebra/670",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "prealgebra/673",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "prealgebra/700",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "prealgebra/722",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "prealgebra/730",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "prealgebra/733",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "prealgebra/750",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "prealgebra/764",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "prealgebra/780",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "prealgebra/792",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "prealgebra/818",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "prealgebra/828",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "prealgebra/834",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "prealgebra/836",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "prealgebra/842",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "prealgebra/859",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "prealgebra/882",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "prealgebra/891",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "prealgebra/894",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "prealgebra/897",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "prealgebra/904",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "prealgebra/905",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "prealgebra/909",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "prealgebra/910",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "prealgebra/930",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "prealgebra/933",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "prealgebra/945",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "prealgebra/964",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "prealgebra/971",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "prealgebra/974",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "prealgebra/984",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "prealgebra/988",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "prealgebra/1012",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "prealgebra/1025",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "prealgebra/1029",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "prealgebra/1055",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "prealgebra/1062",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "prealgebra/1063",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "prealgebra/1066",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "prealgebra/1070",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "prealgebra/1109",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "prealgebra/1142",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "prealgebra/1157",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "prealgebra/1162",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "prealgebra/1165",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "prealgebra/1176",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "prealgebra/1179",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "prealgebra/1182",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "prealgebra/1184",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "prealgebra/1199",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "prealgebra/1200",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "precalculus/2",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "precalculus/27",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "precalculus/34",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "precalculus/35",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "precalculus/46",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "precalculus/53",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "precalculus/65",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "precalculus/73",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "precalculus/74",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "precalculus/78",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "precalculus/92",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "precalculus/118",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "precalculus/120",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "precalculus/126",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "precalculus/132",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "precalculus/137",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "precalculus/139",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "precalculus/141",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "precalculus/159",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "precalculus/164",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "precalculus/172",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "precalculus/178",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "precalculus/181",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "precalculus/184",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "precalculus/186",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "precalculus/188",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "precalculus/199",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "precalculus/214",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "precalculus/220",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "precalculus/229",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "precalculus/230",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "precalculus/237",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "precalculus/238",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "precalculus/244",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "precalculus/249",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "precalculus/256",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "precalculus/257",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "precalculus/270",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "precalculus/276",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "precalculus/278",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "precalculus/281",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "precalculus/289",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "precalculus/301",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "precalculus/311",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "precalculus/321",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "precalculus/327",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "precalculus/332",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "precalculus/338",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "precalculus/343",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "precalculus/355",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "precalculus/359",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "precalculus/361",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "precalculus/365",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "precalculus/368",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "precalculus/374",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "precalculus/380",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "precalculus/385",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "precalculus/387",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "precalculus/397",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "precalculus/399",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "precalculus/403",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "precalculus/409",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "precalculus/420",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "precalculus/421",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "precalculus/431",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "precalculus/435",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "precalculus/441",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "precalculus/444",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "precalculus/448",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "precalculus/453",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "precalculus/456",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "precalculus/459",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "precalculus/463",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "precalculus/482",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "precalculus/495",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "precalculus/510",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "precalculus/518",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "precalculus/520",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "precalculus/532",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "precalculus/564",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "precalculus/568",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "precalculus/579",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "precalculus/585",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "precalculus/591",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "precalculus/594",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "precalculus/606",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "precalculus/607",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "precalculus/609",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "precalculus/612",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "precalculus/633",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "precalculus/640",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "precalculus/653",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "precalculus/660",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "precalculus/672",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "precalculus/674",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "precalculus/692",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "precalculus/695",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "precalculus/696",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "precalculus/711",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "precalculus/721",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "precalculus/722",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "precalculus/733",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "precalculus/736",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "precalculus/741",
+      "reason": "held_out_or_previous_probe_overlap"
+    },
+    {
+      "source_id": "precalculus/742",
+      "reason": "held_out_or_previous_probe_overlap"
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "nicheflow-probe"
+version = "0.5.0"
+description = "Auditable NicheFlow 3.4 main-method driver and prerequisite probes"
+requires-python = ">=3.10"
+dependencies = ["numpy>=1.24,<3"]
+
+[project.optional-dependencies]
+data = ["datasets>=3,<6", "huggingface-hub>=0.26,<1"]
+drop = ["scipy>=1.10,<2"]
+qa = ["ujson>=5,<6"]
+
+[project.scripts]
+nicheflow = "nicheflow.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["nicheflow*", "nicheflow_probe*"]
+
+[tool.setuptools.package-data]
+"nicheflow.vendor" = ["*.LICENSE", "manifest.json"]

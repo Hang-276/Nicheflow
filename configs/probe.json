@@ -1,0 +1,25 @@
+{
+  "authoritative_document": "NicheFlow_3.4_技术方案.docx",
+  "purpose": "Check execution, objective feedback and preliminary workflow complementarity only",
+  "dataset": "EleutherAI/hendrycks_math",
+  "split": "train",
+  "subjects": ["algebra", "number_theory", "counting_and_probability"],
+  "levels": ["Level 3", "Level 4"],
+  "per_stratum": 2,
+  "sample_seed": 20260920,
+  "repeat_count": 4,
+  "model_id": "Qwen/Qwen2.5-7B-Instruct-AWQ",
+  "temperature": 0.7,
+  "top_p": 0.8,
+  "max_new_tokens": 1536,
+  "max_context_tokens": 8192,
+  "generation_seed": 73129,
+  "max_workflow_executions": 48,
+  "notes": [
+    "Sampling and decoding values are probe implementation choices, not hyperparameters specified in the original document.",
+    "The local Qwen 7B 4-bit branch is exercised; heterogeneous-model benefits, search, routing and scheduling remain untested.",
+    "The original 100-niche definition and three algorithms are neither replaced nor claimed implemented.",
+    "Only rational scalar answers without diagram dependence are sampled, before any model output is observed."
+  ]
+}
+
