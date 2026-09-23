@@ -1,0 +1,17 @@
+# Lightweight evaluation/runtime dependencies. Install evalplus separately with --no-deps;
+# its model-generation extras are intentionally unused by this pilot.
+numpy==2.3.5
+pyarrow==21.0.0
+math-verify==0.9.0
+latex2sympy2_extended==1.11.0
+sympy==1.14.0
+ujson==5.11.0
+datasets==4.0.0
+appdirs==1.4.4
+tempdir==0.7.1
+wget==3.2
+psutil==7.1.0
+termcolor==3.1.0
+tqdm==4.67.1
+# Required by the retained historical DROP regression test (not a v072 domain).
+scipy==1.16.2

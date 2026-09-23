@@ -67,3 +67,8 @@ secrets*.json
 /SERVER_CLI_TASK.md
 /docs/CLAUDE_MONITOR_*.md
 /docs/SEARCH_EXPLORATION_MEMORY_*.md
+
+/.v072-venv/
+/data/source_v072/
+/data/multidomain_v072/
+/setup/v072/

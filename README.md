@@ -4,7 +4,7 @@
 
 NicheFlow represents workflows as validated graphs, searches over node roles, connections, and model assignments, and preserves candidates with different quality and cost profiles. It investigates how to select a suitable workflow for each request. This repository contains the research prototype, auditable execution and budget accounting, offline tests, historical experiment configurations, and the next experiment protocol.
 
-> **Research status:** v071 model screening on mathematics is complete. The v072 experiment across mathematics, code generation, and multi-hop reading is planned but has not started. Execution adapters and evaluation protocols still require integration. Dataset registration and passing offline tests do not establish real-model performance.
+> **Research status:** v071 model screening on mathematics is complete. The v072 development stage across mathematics, code generation, and multi-hop reading is now running in an isolated, resumable runner. Workflow search and final evaluation have not started. Dataset registration and passing offline tests do not establish real-model performance.
 
 ## Project status
 
@@ -13,9 +13,9 @@ NicheFlow represents workflows as validated graphs, searches over node roles, co
 | Workflow graphs, execution, archives, search, routing, and accounting | Implemented with offline tests | Historical research implementation with documented engineering assumptions |
 | v050–v060 | Historical experiments and revisions | MATH workflow experiments, fixed comparisons, recovery, and scoring diagnostics |
 | v070–v071 | Independent model screening complete | New model adapters, completion behavior, and audited mathematical answer scoring |
-| v072 | **Planned; not running** | Three task domains and five short search rounds per domain |
+| v072 | **Development stage running** | 12 technical checks + 960 development answers; search and final evaluation remain gated |
 
-The main execution path has not yet been migrated to the selected three-model pool and the revised scoring protocols. Running an older configuration does not reproduce v072.
+The new v072 runner supports the selected models and domain-specific scoring for development collection. The historical main search/routing path still requires integration for the later stages; running an older configuration does not reproduce v072.
 
 ## Model selection
 
@@ -85,7 +85,7 @@ Real-model experiments require separately provisioned local serving, API environ
 
 The retained [NicheFlow 3.4 source document](NicheFlow_3.4_技术方案.docx) is checked by the runtime. Engineering additions are recorded in [ENGINEERING_RECORD.md](docs/ENGINEERING_RECORD.md); the implementation is not claimed to be an exact reproduction without additional assumptions.
 
-## Next experiment: v072
+## Current experiment: v072
 
 The [v072 protocol](docs/MULTIDOMAIN_V072_EXPERIMENT_PLAN_20260923.md) proposes MATH, MBPP, and HotpotQA, with 200 tasks per domain: 40 for development, 20 for screening, 40 for calibration, and 100 for final evaluation. Each domain receives five search rounds with at most two new workflow candidates per round. Final evaluation occurs only after model settings, candidate selection, and routing rules have been frozen.
 
@@ -101,7 +101,17 @@ This pilot does not establish multi-seed stability, causal benefits of multi-nic
 
 Estimated Max usage is approximately **21 million tokens**: 14.4 million input and 6.6 million output tokens. The proposed allowance is 20 million input plus 10 million output tokens. These are planning estimates, not measured consumption or an already implemented budget guarantee. See the [machine-readable budget](reports/multidomain_v072_plan_20260923/max_token_budget.json).
 
-Remaining implementation work includes completion and stopping behavior, model-adapter integration, semantic math scoring, hidden code tests, complete reading-comprehension metrics, and global token reservations. See the [issue-to-validation matrix](docs/ISSUE_VALIDATION_MATRIX_20260923.md) and [revision plan](docs/NEXT_REVISION_PLAN_20260923.md).
+The development runner now provides provider adapters, a shared completion instruction, versioned math scoring, isolated hidden code tests, HotpotQA F1, and token reservations. Nonliteral math scores require audit. Later-stage workflow search, niche descriptors, and routing integration remain to be completed. See the [issue-to-validation matrix](docs/ISSUE_VALIDATION_MATRIX_20260923.md) and [revision plan](docs/NEXT_REVISION_PLAN_20260923.md).
+
+## Progress preservation and recovery
+
+The [execution record](docs/EXPERIMENT_V072.md) describes the current server run. Each provider response is committed to a SQLite WAL database before scoring. In-flight calls reserve budget; provider rejection stops new dispatch while other in-flight responses are saved. Consistent backups are generated every 20 completed answers and at stage boundaries.
+
+After the cause of a pause is resolved, `bash scripts/launch_v072.sh --resume` skips completed requests. Unknown transmission outcomes require reconciliation and are never automatically repeated. Do not delete the run directory or change the frozen protocol to resume. The first-stage caps are 270 attempts per model, CNY 150 and USD 5 in reference charges; they are limits, not expected spending.
+
+The original suite plus the new recovery/input-boundary tests totals **167 tests**, all passing locally. A full-matrix fake-provider test verifies quota interruption and continuation with 972 successful calls and no duplicate success. Server validation includes code isolation, all 40 development reference programs, all reading references, and all 120 prompt lengths. The retained DROP regression required adding SciPy and passed on recheck.
+
+Reproducible task IDs and source hashes are in [the dataset manifest](configs/multidomain_v072.dataset_manifest.json); [historical exclusion hashes](data/v072_exclusions.json) keep fresh-clone preparation independent of unpublished old smoke directories. Generated v072 task files, raw responses, and recovery databases remain outside Git.
 
 ## Reproducibility and artifact boundaries
 
