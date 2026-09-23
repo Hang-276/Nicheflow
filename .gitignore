@@ -72,3 +72,7 @@ secrets*.json
 /data/source_v072/
 /data/multidomain_v072/
 /setup/v072/
+
+!/reports/v072_analysis_20260923/
+/reports/v072_analysis_20260923/*
+!/reports/v072_analysis_20260923/ANALYSIS_AND_SHUTDOWN_20260923.md

@@ -1,5 +1,7 @@
 # v072 continuation protocol
 
+**Run update, September 23, 17:35 CST:** paused on HTTP 403 `AllocationQuota.FreeTierOnly` from Qwen3.7 Flash. The user chose to back up, analyze, and resume another day. All 572 successful continuation calls and one rejected request are preserved, with no unknown or in-flight outcomes. Fixed seeds produced 180 answers; seven searched candidates produced 140 answers. All domains finished round one; mathematics reached round two. Screening, calibration, and final evaluation remain unopened. The complete run archive was downloaded and its SHA-256 matched before server shutdown was confirmed safe.
+
 September 23, 2026. The user requested completion of any remaining experiments before shutting down the rented server. The development run completed 972 requests (12 technical checks and 960 answers). Its 31 nonliteral mathematical labels were reviewed across all four models; no labels changed. The original database remains immutable and is referenced by SHA-256, with a separate audit record.
 
 This continuation implements the remaining bounded pilot: three fixed mixed-model seeds, five search rounds per domain with two candidate slots each, independent screening, calibration, and one frozen final evaluation. It is a separate journal and does not restart the completed development runner.

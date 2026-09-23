@@ -90,6 +90,18 @@ def baseline_rows(db):
     return out
 
 
+def accounting(db):
+    groups=defaultdict(lambda:{'attempts':0,'complete':0,'input_tokens':0,'output_tokens':0,'reference_cost':0.,'unknown':0,'rejected':0})
+    for stage,model,state,raw in db.execute('SELECT c.stage,c.model,a.status,a.response FROM attempts a JOIN calls c ON c.id=a.call_id'):
+        response=json.loads(raw) if raw else {};currency=response.get('currency','unknown')
+        s=groups[stage,model,currency];s['attempts']+=1
+        if state=='complete':
+            s['complete']+=1;s['input_tokens']+=response['input_tokens'];s['output_tokens']+=response['output_tokens'];s['reference_cost']+=response['reference_cost']
+        elif state=='rejected':s['rejected']+=1
+        else:s['unknown']+=1
+    return [{'stage':stage,'model':model,'currency':currency,**s} for (stage,model,currency),s in sorted(groups.items())]
+
+
 def replay(db,final_rows):
     frozen=get(db,'final_protocol_frozen');weights=get(db,'frozen_routers')
     assert frozen and digest(weights)==frozen['router_sha256']
@@ -124,7 +136,7 @@ def replay(db,final_rows):
 def main():
     p=argparse.ArgumentParser();p.add_argument('--parent',required=True);p.add_argument('--continuation');p.add_argument('--out',required=True)
     args=p.parse_args();out=Path(args.out);out.mkdir(parents=True,exist_ok=True)
-    parent=connect(args.parent);result={'development':summary(baseline_rows(parent)),
+    parent=connect(args.parent);result={'development':summary(baseline_rows(parent)),'accounting':accounting(parent),
         'source_parent_sha256':file_hash(args.parent),'final_complete':False}
     if args.continuation:
         db=connect(args.continuation);result['source_continuation_sha256']=file_hash(args.continuation)
@@ -135,6 +147,10 @@ def main():
         result['rounds_completed']=len(artifacts(db,'round/'))
         result['deployment']={d:get(db,'deployment/'+d) for d in ['math','mbpp','hotpotqa']}
         result['proposal_slots']=len([k for k, in db.execute("SELECT key FROM artifacts WHERE key LIKE 'proposal/%'") if k.count('/')==3])
+        result['accounting']+=accounting(db)
+        result['proposals']=[{'key':key,**json.loads(value)} for key,value in db.execute("SELECT key,value FROM artifacts WHERE key LIKE 'proposal/%'") if key.count('/')==3]
+        result['search_statistics']=get(db,'search_summary')
+        result['adjudication_count']=len(artifacts(db,'adjudication/'))
         if complete:result['routing_replay']=replay(db,artifacts(db,'answer/final/'))
         db.close()
     parent.close();atomic_json(out/'analysis.json',result)

@@ -2,6 +2,7 @@
 
 优先阅读当前材料：
 
+- [v072 今日结果、暂停位置与关机备份](../reports/v072_analysis_20260923/ANALYSIS_AND_SHUTDOWN_20260923.md)
 - [v072 后续搜索、选择、终评与恢复协议（英文）](EXPERIMENT_V072_CONTINUATION.md)
 - [v072 实际启动范围、保存与恢复机制（英文）](EXPERIMENT_V072.md)
 
