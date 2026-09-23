@@ -4,7 +4,7 @@
 
 NicheFlow represents workflows as validated graphs, searches over node roles, connections, and model assignments, and preserves candidates with different quality and cost profiles. It investigates how to select a suitable workflow for each request. This repository contains the research prototype, auditable execution and budget accounting, offline tests, historical experiment configurations, and the next experiment protocol.
 
-> **Research status:** v071 model screening on mathematics is complete. The v072 development stage across mathematics, code generation, and multi-hop reading is now running in an isolated, resumable runner. Workflow search and final evaluation have not started. Dataset registration and passing offline tests do not establish real-model performance.
+> **Research status:** v072 development collection and its mathematical scoring audit are complete: 960 answers across mathematics, code generation, and multi-hop reading, plus 12 technical checks. The bounded continuation is running fixed workflows, five search rounds, independent screening, calibration, and a gated final evaluation. Dataset registration and passing offline tests do not establish real-model performance.
 
 ## Project status
 
@@ -13,9 +13,9 @@ NicheFlow represents workflows as validated graphs, searches over node roles, co
 | Workflow graphs, execution, archives, search, routing, and accounting | Implemented with offline tests | Historical research implementation with documented engineering assumptions |
 | v050–v060 | Historical experiments and revisions | MATH workflow experiments, fixed comparisons, recovery, and scoring diagnostics |
 | v070–v071 | Independent model screening complete | New model adapters, completion behavior, and audited mathematical answer scoring |
-| v072 | **Development stage running** | 12 technical checks + 960 development answers; search and final evaluation remain gated |
+| v072 | **Development complete; continuation running** | Durable receipts, bounded five-round search, independent selection, and frozen final evaluation |
 
-The new v072 runner supports the selected models and domain-specific scoring for development collection. The historical main search/routing path still requires integration for the later stages; running an older configuration does not reproduce v072.
+The v072 continuation uses a separate durable runner and a constrained workflow schema. It is a bounded cross-domain pilot, not a claim that the complete historical adaptive scheduler has been validated with the new models. See the [continuation protocol](docs/EXPERIMENT_V072_CONTINUATION.md); running an older configuration does not reproduce v072.
 
 ## Model selection
 
