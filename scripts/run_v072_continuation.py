@@ -44,6 +44,35 @@ POLICY = {
 }
 
 
+def verify_parent_sources(code, sandbox_root=None):
+    """Permit only the recorded, validated oracle-memory repair of two files."""
+    path = ROOT / 'setup/v072/scoring_memory_migration_20260924.json'
+    migration = json.loads(path.read_text()) if path.exists() else None
+    allowed = {'scripts/v072_code_worker.py', 'scripts/v072_code_sandbox.py'}
+    if migration is not None:
+        assert migration['version'] == 'v072-reference-memory-1'
+        assert set(migration['source_changes']) == allowed
+        assert migration['validation']['passed'] is True
+        for name, change in migration['source_changes'].items():
+            assert change['old_sha256'] == code[name]
+            assert change['new_sha256'] == file_hash(ROOT/name)
+        if sandbox_root is not None:
+            assert file_hash(Path(sandbox_root)/'sandbox-manifest.json') == migration['sandbox_manifest']['new_sha256']
+            assert file_hash(Path(sandbox_root)/'worker.py') == migration['source_changes']['scripts/v072_code_worker.py']['new_sha256']
+    for name, expected in code.items():
+        actual = file_hash(ROOT/name)
+        if actual != expected:
+            assert migration is not None and name in allowed, 'Phase A scoring or execution code changed: '+name
+            assert migration['source_changes'][name] == {'old_sha256': expected, 'new_sha256': actual}
+    return file_hash(path) if migration is not None else None
+
+
+def reference_task_digest(task):
+    # EvalPlus inputs legitimately contain +/-inf and NaN. Hash their stable
+    # Python JSON representation as a string inside the strict journal hash.
+    return digest(json.dumps(task.record(), sort_keys=True, ensure_ascii=False, separators=(',', ':')))
+
+
 def canonical(graph):
     """Normalize node identifiers so renaming is not a new workflow."""
     mapping = {n['id']: f'n{i}' for i, n in enumerate(graph['nodes'])}
@@ -151,8 +180,7 @@ class Experiment:
         assert self.parent.execute('PRAGMA integrity_check').fetchone()[0] == 'ok'
         parent_frozen = json.loads(self.parent.execute("SELECT value FROM meta WHERE key='frozen'").fetchone()[0])
         assert parent_frozen['config'] == config, 'Phase A model/request configuration changed'
-        for path, h in parent_frozen['code'].items():
-            assert file_hash(ROOT/path) == h, 'Phase A scoring or execution code changed: '+path
+        scoring_migration = verify_parent_sources(parent_frozen['code'], config['code_sandbox_root'])
         assert file_hash(ROOT/'requirements.lock') == parent_frozen['readiness']['runtime_lock_sha256']
         assert self.parent.execute("SELECT count(*) FROM attempts WHERE status='complete'").fetchone()[0] == 972
         assert self.parent.execute("SELECT count(*) FROM attempts WHERE status!='complete'").fetchone()[0] == 0
@@ -178,6 +206,8 @@ class Experiment:
                   'manifest_sha256': file_hash(ROOT/config['manifest']),
                   'source_hashes': {str(p.relative_to(ROOT)): file_hash(p) for p in sources},
                   'runtime_lock_sha256': file_hash(ROOT/'requirements.lock')}
+        if scoring_migration is not None:
+            frozen['scoring_memory_migration_sha256'] = scoring_migration
         self.store = Store(directory, frozen, resume=resume)
         self.load_audits()
         self.keys = credentials(config['credentials_file'])
@@ -382,8 +412,14 @@ class Experiment:
         if self.store.artifact(key): return
         # This only checks scoring infrastructure; scores never feed graph or router selection.
         for task in self.tasks('mbpp', split):
+            case_key = 'reference_case/' + split + '/' + task.id
+            old = self.store.artifact(case_key)
+            if old:
+                assert old['passed'] and old['task_sha256'] == reference_task_digest(task)
+                continue
             result = run_score(task, {'status': 'ok', 'finish_reason': 'stop', 'text': '```python\n'+task.gold+'\n```'}, self.config)
             if result['quality'] != 1: raise ValueError('MBPP canonical reference failed: ' + task.id)
+            self.store.artifact(case_key, {'passed': True, 'task_sha256': reference_task_digest(task)}, write=True)
         self.store.artifact(key, {'passed': True}, write=True)
 
     def gate(self, phase):

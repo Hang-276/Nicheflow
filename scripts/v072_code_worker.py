@@ -3,16 +3,42 @@
 import contextlib
 import ctypes
 import errno
+import gc
+import inspect
 import io
 import json
 import os
 import re
 import socket
 import sys
+import evalplus.eval as eval_runtime
 from evalplus.eval import untrusted_check,PASS
 from evalplus.gen.util import trusted_exec
 from evalplus.data.mbpp import mbpp_deserialize_inputs
 from evalplus.eval._special_oracle import MBPP_OUTPUT_NOT_NONE_TASKS
+
+CANDIDATE_MEMORY = 2 * 1024**3
+
+
+class ReferenceMemoryLimit(Exception):
+    """The trusted oracle, rather than a submitted answer, exhausted memory."""
+
+
+def reference_size(value):
+    """Count the retained oracle object graph once, including shared objects."""
+    seen = set()
+    def size(obj):
+        ident = id(obj)
+        if ident in seen:
+            return 0
+        seen.add(ident)
+        total = sys.getsizeof(obj)
+        if isinstance(obj, dict):
+            total += sum(size(k) + size(v) for k, v in obj.items())
+        elif isinstance(obj, (list, tuple, set, frozenset)):
+            total += sum(size(v) for v in obj)
+        return total
+    return size(value)
 
 
 def restrict_syscalls():
@@ -35,9 +61,33 @@ def restrict_syscalls():
     lib.seccomp_release(ctx)
 
 
-def check(code,inputs,entry,expected,times,atol=0):
-    status,_=untrusted_check('mbpp',code,inputs,entry,expected=expected,atol=atol,ref_time=times,
-                              fast_check=True,min_time_limit=.2,gt_time_limit_factor=4.)
+def check(code,inputs,entry,expected,times,atol=0,reference_bytes=0):
+    original = eval_runtime.query_maximum_memory_bytes
+    original_execute = eval_runtime.unsafe_execute
+    if reference_bytes:
+        gc.collect()
+        trim = getattr(ctypes.CDLL(None), 'malloc_trim', None)
+        if trim is not None:
+            trim(0)
+        # EvalPlus forks a child that inherits the retained trusted answers.
+        # Reserve those immutable reference objects separately from the same
+        # 2 GiB candidate/runtime allowance, instead of charging them twice.
+        eval_runtime.query_maximum_memory_bytes = lambda: CANDIDATE_MEMORY + reference_bytes
+        # EvalPlus retains `out` until the next timed assignment. Disposing a
+        # previous >1 GiB result must not consume the next input's 0.2s limit.
+        source = inspect.getsource(original_execute)
+        needle = 'for i, inp in enumerate(inputs):\n                try:'
+        assert source.count(needle) == 1, 'unexpected pinned EvalPlus execution loop'
+        source = source.replace(needle, 'for i, inp in enumerate(inputs):\n                out = None\n                try:')
+        namespace = dict(original_execute.__globals__)
+        exec(compile(source, '<evalplus-reference-memory-recovery>', 'exec'), namespace)
+        eval_runtime.unsafe_execute = namespace['unsafe_execute']
+    try:
+        status,_=untrusted_check('mbpp',code,inputs,entry,expected=expected,atol=atol,ref_time=times,
+                                  fast_check=True,min_time_limit=.2,gt_time_limit_factor=4.)
+    finally:
+        eval_runtime.query_maximum_memory_bytes = original
+        eval_runtime.unsafe_execute = original_execute
     return status==PASS,status
 
 
@@ -72,10 +122,20 @@ def score(record):
     stats={}
     for group in ['base','plus']:
         inputs=mbpp_deserialize_inputs(problem['task_id'],problem[group+'_input'])
-        expected,times=trusted_exec(oracle,inputs,entry,record_time=True,
-                                   output_not_none=entry in MBPP_OUTPUT_NOT_NONE_TASKS)
-        passed,status=check(code,inputs,entry,expected,times,problem['atol'])
+        try:
+            expected,times=trusted_exec(oracle,inputs,entry,record_time=True,
+                                       output_not_none=entry in MBPP_OUTPUT_NOT_NONE_TASKS)
+        except MemoryError as exc:
+            raise ReferenceMemoryLimit from exc
+        reference_bytes = reference_size(expected) if record.get('reference_headroom') else 0
+        if reference_bytes > 6 * 1024**3:
+            raise ReferenceMemoryLimit
+        passed,status=check(code,inputs,entry,expected,times,problem['atol'],reference_bytes)
         stats[group+'_passed']=passed;stats[group+'_status']=status;stats[group+'_tests']=len(inputs)
+        if record.get('reference_headroom'):
+            stats[group+'_reference_bytes'] = reference_bytes
+        if record.get('reference_headroom'):
+            del expected, times
     tests=private['tests']
     wrapped=code+'\ndef __nicheflow_private_tests():\n'+''.join('    '+line+'\n' for test in tests for line in test.splitlines())+'    return True\n'
     source_pass,status=check(wrapped,[[]],'__nicheflow_private_tests',[True],[.01])
@@ -84,8 +144,16 @@ def score(record):
             'outcome':'complete','quality_metric':'source_hidden_and_evalplus_base_plus','metrics':stats,'audit_required':False}
 
 
-record=json.load(sys.stdin)
-restrict_syscalls()
-with contextlib.redirect_stdout(io.StringIO()):
-    result=selftest() if record.get('selftest') else score(record)
-print(json.dumps(result,ensure_ascii=False,allow_nan=False))
+def main():
+    record=json.load(sys.stdin)
+    restrict_syscalls()
+    try:
+        with contextlib.redirect_stdout(io.StringIO()):
+            result=selftest() if record.get('selftest') else score(record)
+    except ReferenceMemoryLimit:
+        result={'infrastructure_error':'reference_memory_limit'}
+    print(json.dumps(result,ensure_ascii=False,allow_nan=False))
+
+
+if __name__ == '__main__':
+    main()

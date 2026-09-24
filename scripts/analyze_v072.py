@@ -111,6 +111,8 @@ def replay(db,final_rows):
         tasks=load_tasks(ROOT/f'data/multidomain_v072/{d}/final.jsonl')
         idx={(r['task_id'],r['candidate'],r['sample']):r for r in final_rows if r['domain']==d}
         pools={'L_H':['L','H'],'M_H':['M','H'],'L_M_H':['L','M','H'],
+               'with_fixed':['L','M','H',deployment['fixed']],
+               'with_searched':['L','M','H',deployment['searched']],
                'five_arms':['L','M','H',deployment['fixed'],deployment['searched']]}
         for name,arms in pools.items():
             choices=[]
