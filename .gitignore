@@ -80,3 +80,7 @@ secrets*.json
 !/reports/v072_final_20260924/
 /reports/v072_final_20260924/*
 !/reports/v072_final_20260924/FINAL_REPORT.md
+
+!/reports/prescale_v073_20260924/
+/reports/prescale_v073_20260924/*
+!/reports/prescale_v073_20260924/FINAL_REPORT.md

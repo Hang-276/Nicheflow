@@ -6,7 +6,7 @@ NicheFlow represents workflows as validated graphs, searches over node roles, co
 
 > **Research status, September 24:** v072 is complete, including all 3,600 final answers and the final math audit. The archive is verified off-server and local analysis reproduces the server results. Max outperformed Flash on code in this pilot; selected searched workflows did not improve the observed quality–cost trade-off over Flash, and the frozen router made a constant choice within each domain. See the [final report](reports/v072_final_20260924/FINAL_REPORT.md) and [scoring repair record](docs/V072_REFERENCE_MEMORY_REPAIR_20260924.md). These results do not establish the effectiveness of the full NicheFlow method.
 
-> **Bounded follow-up launched, September 24, 21:50 CST:** the [v073 pre-scale protocol](docs/PRESCALE_V073_20260924.md) is running a maximum 140-call repair package in a separate journal. The offline router diagnostic is complete; standardization was not a universal improvement. A gated two-seed search comparison is prepared with at most 870 additional calls, including common initialization and controls. No large-scale confirmation has started.
+> **Bounded follow-up completed, September 24, 22:04 CST:** v073 saved all 140 repair calls and 120 answers. Both repair gates failed; neither prompt revision is accepted, and the conditional two-seed search comparison was not launched. The offline router diagnostic did not support standardization as a universal improvement. The off-server archive is verified and local analysis matches the server. See the [v073 report](reports/prescale_v073_20260924/FINAL_REPORT.md), including a limitation in the reading acceptance design. No large-scale confirmation has started.
 
 ## Project status
 
@@ -16,7 +16,7 @@ NicheFlow represents workflows as validated graphs, searches over node roles, co
 | v050–v060 | Historical experiments and revisions | MATH workflow experiments, fixed comparisons, recovery, and scoring diagnostics |
 | v070–v071 | Independent model screening complete | New model adapters, completion behavior, and audited mathematical answer scoring |
 | v072 | **Complete; backup verified** | 960 development, 180 fixed-seed, 560 searched-candidate, 840 screening, 1,440 calibration, and 3,600 final answers; 28 valid candidates across 30 search slots |
-| v073 pre-scale | **Repair validation running** | Protected output contracts and one local stopping variant; offline grouped-CV routing diagnostic complete; bounded search follows only after the repair gate |
+| v073 pre-scale | **Repair complete; revisions rejected; backup verified** | 140 calls, 120 answers; offline routing diagnostic complete; conditional search not launched |
 
 The v072 continuation uses a separate durable runner and a constrained workflow schema. It is a bounded cross-domain pilot, not a claim that the complete historical adaptive scheduler has been validated with the new models. See the [continuation protocol](docs/EXPERIMENT_V072_CONTINUATION.md); running an older configuration does not reproduce v072.
 
