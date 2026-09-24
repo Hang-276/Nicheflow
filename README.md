@@ -6,6 +6,8 @@ NicheFlow represents workflows as validated graphs, searches over node roles, co
 
 > **Research status, September 24:** v072 is complete, including all 3,600 final answers and the final math audit. The archive is verified off-server and local analysis reproduces the server results. Max outperformed Flash on code in this pilot; selected searched workflows did not improve the observed quality–cost trade-off over Flash, and the frozen router made a constant choice within each domain. See the [final report](reports/v072_final_20260924/FINAL_REPORT.md) and [scoring repair record](docs/V072_REFERENCE_MEMORY_REPAIR_20260924.md). These results do not establish the effectiveness of the full NicheFlow method.
 
+> **Bounded follow-up launched, September 24, 21:50 CST:** the [v073 pre-scale protocol](docs/PRESCALE_V073_20260924.md) is running a maximum 140-call repair package in a separate journal. The offline router diagnostic is complete; standardization was not a universal improvement. A gated two-seed search comparison is prepared with at most 870 additional calls, including common initialization and controls. No large-scale confirmation has started.
+
 ## Project status
 
 | Component or stage | Status | Scope |
@@ -14,6 +16,7 @@ NicheFlow represents workflows as validated graphs, searches over node roles, co
 | v050–v060 | Historical experiments and revisions | MATH workflow experiments, fixed comparisons, recovery, and scoring diagnostics |
 | v070–v071 | Independent model screening complete | New model adapters, completion behavior, and audited mathematical answer scoring |
 | v072 | **Complete; backup verified** | 960 development, 180 fixed-seed, 560 searched-candidate, 840 screening, 1,440 calibration, and 3,600 final answers; 28 valid candidates across 30 search slots |
+| v073 pre-scale | **Repair validation running** | Protected output contracts and one local stopping variant; offline grouped-CV routing diagnostic complete; bounded search follows only after the repair gate |
 
 The v072 continuation uses a separate durable runner and a constrained workflow schema. It is a bounded cross-domain pilot, not a claim that the complete historical adaptive scheduler has been validated with the new models. See the [continuation protocol](docs/EXPERIMENT_V072_CONTINUATION.md); running an older configuration does not reproduce v072.
 
@@ -101,7 +104,7 @@ This pilot does not establish multi-seed stability, causal benefits of multi-nic
 
 Measured Max use across the completed experiment was **2,121,770 tokens**: 1,888,306 input and 233,464 output, across 2,061 successful calls. All models together used CNY 32.8987 plus USD 0.5562 in reference API charges, excluding GPU rental and without claiming invoice verification. The earlier [21-million-token planning estimate](reports/multidomain_v072_plan_20260923/max_token_budget.json) is retained as a budget artifact, not a measurement.
 
-The development runner provides provider adapters, a shared completion instruction, versioned math scoring, isolated hidden code tests, HotpotQA F1, and token reservations. Nonliteral math scores require audit. The separate continuation runner implements bounded workflow search, structural/model-set niches, independent selection, and a low-dimensional frozen router. Their first independent outcome assessment is complete; it does not show a benefit from per-task routing or the selected searched workflows over the relevant simple baselines. See the [pre-scale checklist](docs/PRE_SCALE_CHECKLIST_20260924.md) for completed work and remaining changes; no subsequent experiment has been started.
+The development runner provides provider adapters, a shared completion instruction, versioned math scoring, isolated hidden code tests, HotpotQA F1, and token reservations. Nonliteral math scores require audit. The separate continuation runner implements bounded workflow search, structural/model-set niches, independent selection, and a low-dimensional frozen router. Their first independent outcome assessment is complete; it does not show a benefit from per-task routing or the selected searched workflows over the relevant simple baselines. The [v073 protocol](docs/PRESCALE_V073_20260924.md) now implements the authorized bounded follow-up; the earlier [pre-scale checklist](docs/PRE_SCALE_CHECKLIST_20260924.md) remains a dated planning record.
 
 ## Progress preservation and recovery
 

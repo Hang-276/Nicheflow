@@ -2,6 +2,7 @@
 
 优先阅读当前材料：
 
+- [v073 大规模实验前的有限修复与搜索对照（英文）](PRESCALE_V073_20260924.md)
 - [v072 最终结果、方法结论与已校验本地备份](../reports/v072_final_20260924/FINAL_REPORT.md)
 - [v072 评分基础设施修复记录（英文）](V072_REFERENCE_MEMORY_REPAIR_20260924.md)
 - [v072 今日结果、暂停位置与关机备份](../reports/v072_analysis_20260923/ANALYSIS_AND_SHUTDOWN_20260923.md)
