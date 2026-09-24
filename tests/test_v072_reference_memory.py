@@ -6,7 +6,10 @@ from pathlib import Path
 from types import SimpleNamespace
 from unittest.mock import patch
 
-from scripts import v072_code_worker as worker
+try:
+    from scripts import v072_code_worker as worker
+except ImportError:
+    worker = None  # The basic offline installation does not require EvalPlus.
 from scripts import run_v072_continuation as continuation
 from nicheflow.spec import file_hash
 
@@ -58,6 +61,7 @@ class ReferenceMemoryTests(unittest.TestCase):
                 with self.assertRaises(AssertionError):
                     continuation.verify_parent_sources(old)
 
+    @unittest.skipIf(worker is None, 'requires the optional EvalPlus scoring runtime')
     def test_reference_size_counts_aliases_once_and_handles_cycles(self):
         shared = [1, 2]
         value = [shared, shared]
@@ -66,6 +70,7 @@ class ReferenceMemoryTests(unittest.TestCase):
         value.append(value)
         self.assertEqual(worker.reference_size(value), expected + sys.getsizeof(value) - sys.getsizeof([shared, shared]))
 
+    @unittest.skipIf(worker is None, 'requires the optional EvalPlus scoring runtime')
     def test_original_candidate_guard_is_unchanged_without_recovery(self):
         original = worker.eval_runtime.query_maximum_memory_bytes
         def fake_check(*args, **kwargs):
@@ -74,6 +79,7 @@ class ReferenceMemoryTests(unittest.TestCase):
         with patch.object(worker, 'untrusted_check', side_effect=fake_check):
             self.assertTrue(worker.check('', [[]], 'f', [1], [.01])[0])
 
+    @unittest.skipIf(worker is None, 'requires the optional EvalPlus scoring runtime')
     def test_reference_allowance_is_scoped_and_restored_on_failure(self):
         original = worker.eval_runtime.query_maximum_memory_bytes
         def fake_check(*args, **kwargs):
@@ -84,6 +90,7 @@ class ReferenceMemoryTests(unittest.TestCase):
                 worker.check('', [[]], 'f', [1], [.01], reference_bytes=12345)
         self.assertIs(worker.eval_runtime.query_maximum_memory_bytes, original)
 
+    @unittest.skipIf(worker is None, 'requires the optional EvalPlus scoring runtime')
     def test_oracle_oom_is_not_a_wrong_answer(self):
         record = {'task': {'private': {'evalplus': {'entry_point': 'f', 'prompt': '',
             'canonical_solution': '', 'task_id': 'Mbpp/1', 'base_input': [[]]}}},

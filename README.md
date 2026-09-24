@@ -4,7 +4,7 @@
 
 NicheFlow represents workflows as validated graphs, searches over node roles, connections, and model assignments, and preserves candidates with different quality and cost profiles. It investigates how to select a suitable workflow for each request. This repository contains the research prototype, auditable execution and budget accounting, offline tests, historical experiment configurations, and the next experiment protocol.
 
-> **Research status:** v072 is safely paused after a Qwen Flash free-quota rejection, with complete off-server backups. Development collection, fixed workflows, and the first search round in all three domains are complete. Mathematics reached the second round. Screening, calibration, and final evaluation have not started. See the [September 23 analysis and recovery record](reports/v072_analysis_20260923/ANALYSIS_AND_SHUTDOWN_20260923.md).
+> **Research status, September 24:** all five search rounds per domain, independent screening, and router calibration are complete. Final evaluation is running after an audited repair to reference-heavy code scoring. Earlier receipts are preserved and the pre-final checkpoint is backed up off-server. See the [continuation protocol](docs/EXPERIMENT_V072_CONTINUATION.md) and [scoring repair record](docs/V072_REFERENCE_MEMORY_REPAIR_20260924.md). Final method conclusions remain pending.
 
 ## Project status
 
@@ -13,13 +13,13 @@ NicheFlow represents workflows as validated graphs, searches over node roles, co
 | Workflow graphs, execution, archives, search, routing, and accounting | Implemented with offline tests | Historical research implementation with documented engineering assumptions |
 | v050–v060 | Historical experiments and revisions | MATH workflow experiments, fixed comparisons, recovery, and scoring diagnostics |
 | v070–v071 | Independent model screening complete | New model adapters, completion behavior, and audited mathematical answer scoring |
-| v072 | **Paused; saved and backed up** | 960 development answers, 180 fixed-workflow answers, 140 searched-workflow answers; later stages remain unexecuted |
+| v072 | **Final evaluation running** | 960 development, 180 fixed-seed, 560 searched-candidate, 840 screening, and 1,440 calibration answers complete; 3,600 final answers planned |
 
 The v072 continuation uses a separate durable runner and a constrained workflow schema. It is a bounded cross-domain pilot, not a claim that the complete historical adaptive scheduler has been validated with the new models. See the [continuation protocol](docs/EXPERIMENT_V072_CONTINUATION.md); running an older configuration does not reproduce v072.
 
 ## Model selection
 
-The next experiment uses the following deployment roles. Price and deployment tiers are experimental conditions, not a demonstrated ordering of model capability.
+The v072 experiment uses the following deployment roles. Price and deployment tiers are experimental conditions, not a demonstrated ordering of model capability.
 
 | Role | Configuration |
 |---|---|
@@ -101,13 +101,15 @@ This pilot does not establish multi-seed stability, causal benefits of multi-nic
 
 Estimated Max usage is approximately **21 million tokens**: 14.4 million input and 6.6 million output tokens. The proposed allowance is 20 million input plus 10 million output tokens. These are planning estimates, not measured consumption or an already implemented budget guarantee. See the [machine-readable budget](reports/multidomain_v072_plan_20260923/max_token_budget.json).
 
-The development runner now provides provider adapters, a shared completion instruction, versioned math scoring, isolated hidden code tests, HotpotQA F1, and token reservations. Nonliteral math scores require audit. Later-stage workflow search, niche descriptors, and routing integration remain to be completed. See the [issue-to-validation matrix](docs/ISSUE_VALIDATION_MATRIX_20260923.md) and [revision plan](docs/NEXT_REVISION_PLAN_20260923.md).
+The development runner provides provider adapters, a shared completion instruction, versioned math scoring, isolated hidden code tests, HotpotQA F1, and token reservations. Nonliteral math scores require audit. The separate continuation runner implements bounded workflow search, structural/model-set niches, independent selection, and a low-dimensional frozen router. These implemented components still require independent outcome assessment. See the [current pre-scale checklist](docs/PRE_SCALE_CHECKLIST_20260924.md) for implemented, unvalidated, and deferred items.
 
 ## Progress preservation and recovery
 
 The [execution record](docs/EXPERIMENT_V072.md) describes the current server run. Each provider response is committed to a SQLite WAL database before scoring. In-flight calls reserve budget; provider rejection stops new dispatch while other in-flight responses are saved. Consistent backups are generated every 20 completed answers and at stage boundaries.
 
 After the cause of a pause is resolved, `bash scripts/launch_v072.sh --resume` skips completed requests. Unknown transmission outcomes require reconciliation and are never automatically repeated. Do not delete the run directory or change the frozen protocol to resume. The first-stage caps are 270 attempts per model, CNY 150 and USD 5 in reference charges; they are limits, not expected spending.
+
+For the separate search/calibration/final run, use `bash scripts/launch_v072_continuation.sh --resume` instead. Restoring the repaired September 24 continuation requires its recorded scoring migration and corresponding runtime manifest; preserve them with both phase databases. The one-time migration script is guarded and is not a general command for bypassing frozen identities.
 
 The original suite plus the new recovery/input-boundary tests totals **167 tests**, all passing locally. A full-matrix fake-provider test verifies quota interruption and continuation with 972 successful calls and no duplicate success. Server validation includes code isolation, all 40 development reference programs, all reading references, and all 120 prompt lengths. The retained DROP regression required adding SciPy and passed on recheck.
 

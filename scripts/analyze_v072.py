@@ -30,6 +30,12 @@ def artifacts(db,prefix):
             if decision:
                 r['score']['raw_quality']=r['score']['quality']
                 r['score']['quality']=decision['quality'];r['score']['audit_required']=False
+            local_seconds=0.
+            for call_id in r.get('calls',[]):
+                receipt=db.execute("SELECT c.model,a.response FROM calls c JOIN attempts a ON c.id=a.call_id WHERE c.id=? AND a.status='complete'",(call_id,)).fetchone()
+                assert receipt is not None
+                if receipt[0]=='L':local_seconds+=json.loads(receipt[1])['elapsed_seconds']
+            r['local_serving_seconds']=local_seconds
         result.append(r)
     return result
 
@@ -64,6 +70,7 @@ def summary(rows):
             'quality':float(np.mean(q)),'truncated':sum('truncated' in r['score']['outcome'] for r in rs),
             'missing_or_malformed':sum(r['score']['outcome'] in ('missing_final','malformed') for r in rs),
             'mean_seconds':float(np.mean(lat)),'median_seconds':float(np.median(lat)),
+            'mean_local_serving_seconds':float(np.mean([r.get('local_serving_seconds',0.) for r in rs])),
             'p95_seconds':float(np.percentile(lat,95)),'max_seconds':float(max(lat)),
             'currency':rs[0]['currency'],'reference_cost':sum(r['reference_cost'] for r in rs),
             'mean_reference_cost':float(np.mean([r['reference_cost'] for r in rs])),
@@ -86,7 +93,8 @@ def baseline_rows(db):
     for r in artifacts(db,'answer/development/'):
         a=json.loads(db.execute("SELECT response FROM attempts WHERE call_id=? AND status='complete'",(r['call_id'],)).fetchone()[0])
         out.append({**r,'candidate':r['model'],'currency':a['currency'],'reference_cost':a['reference_cost'],
-                    'cost_cny':a['reference_cost'] if a['currency']=='CNY' else None,'elapsed_seconds':a['elapsed_seconds']})
+                    'cost_cny':a['reference_cost'] if a['currency']=='CNY' else None,'elapsed_seconds':a['elapsed_seconds'],
+                    'local_serving_seconds':a['elapsed_seconds'] if r['model']=='L' else 0.})
     return out
 
 
@@ -126,19 +134,49 @@ def replay(db,final_rows):
             for policy,selected in [('ridge',choices),('constant',[constant]*len(tasks)),('matched_use_random',random_choices)]:
                 chosen=[idx[t.id,a,s] for t,a in zip(tasks,selected) for s in range(2)]
                 flash=[idx[t.id,'M',s] for t in tasks for s in range(2)]
+                constant_rows=[idx[t.id,constant,s] for t in tasks for s in range(2)]
+                local_seconds=float(np.mean([r['local_serving_seconds'] for r in chosen]))
+                mean_cost=float(np.mean([r['cost_cny'] for r in chosen]))
+                saving=float(np.mean([r['cost_cny'] for r in flash]))-mean_cost
                 results.append({'domain':d,'pool':name,'policy':policy,
                     'quality':float(np.mean([r['score']['quality'] for r in chosen])),
                     'mean_cost_cny':float(np.mean([r['cost_cny'] for r in chosen])),
                     'mean_serial_call_seconds':float(np.mean([r['elapsed_seconds'] for r in chosen])),
+                    'mean_local_serving_seconds':local_seconds,
+                    'gpu_rental_break_even_cny_per_hour_at_full_utilization':3600*saving/local_seconds if local_seconds>0 and saving>0 else None,
+                    'gpu_break_even_assumption':'API savings versus Flash; uses measured local request seconds, assumes full utilization, excludes idle time and other costs',
                     'choices_by_task':{a:selected.count(a) for a in arms},'difference_from_flash':paired(chosen,flash),
+                    'constant_candidate':constant,'difference_from_calibration_constant':paired(chosen,constant_rows),
                     'mode':'stored-response offline replay, not live conditional execution'})
     return results
+
+
+def verify_complete_final(db,rows):
+    frozen=get(db,'final_protocol_frozen')
+    assert frozen and get(db,'complete')
+    assert not db.execute("SELECT 1 FROM attempts WHERE status NOT IN ('complete','rejected') LIMIT 1").fetchone()
+    assert not db.execute("SELECT call_id FROM attempts WHERE status='complete' GROUP BY call_id HAVING count(*)!=1 LIMIT 1").fetchone()
+    expected=set()
+    for d in ['math','mbpp','hotpotqa']:
+        deployment=frozen['deployments'][d]
+        arms=['L','M','H','D',deployment['fixed'],deployment['searched']]
+        assert len(set(arms))==6
+        tasks=load_tasks(ROOT/f'data/multidomain_v072/{d}/final.jsonl')
+        assert len(tasks)==100 and len({t.id for t in tasks})==100
+        expected.update((d,t.id,a,s) for t in tasks for a in arms for s in range(2))
+    observed=[(r['domain'],r['task_id'],r['candidate'],r['sample']) for r in rows]
+    assert len(observed)==len(set(observed))==3600 and set(observed)==expected
+    assert all(not r['score'].get('audit_required') for r in rows)
+    return {'complete_answers':len(rows),'independent_tasks':300,'samples_per_task_per_arm':2,
+            'arms_per_domain':6,'unknown_or_inflight_calls':0,'unresolved_math_audits':0,
+            'duplicate_successful_receipts':0}
 
 
 def main():
     p=argparse.ArgumentParser();p.add_argument('--parent',required=True);p.add_argument('--continuation');p.add_argument('--out',required=True)
     args=p.parse_args();out=Path(args.out);out.mkdir(parents=True,exist_ok=True)
-    parent=connect(args.parent);result={'development':summary(baseline_rows(parent)),'accounting':accounting(parent),
+    parent=connect(args.parent);result={'analysis_source_sha256':file_hash(__file__),
+        'development':summary(baseline_rows(parent)),'accounting':accounting(parent),
         'source_parent_sha256':file_hash(args.parent),'final_complete':False}
     if args.continuation:
         db=connect(args.continuation);result['source_continuation_sha256']=file_hash(args.continuation)
@@ -153,7 +191,10 @@ def main():
         result['proposals']=[{'key':key,**json.loads(value)} for key,value in db.execute("SELECT key,value FROM artifacts WHERE key LIKE 'proposal/%'") if key.count('/')==3]
         result['search_statistics']=get(db,'search_summary')
         result['adjudication_count']=len(artifacts(db,'adjudication/'))
-        if complete:result['routing_replay']=replay(db,artifacts(db,'answer/final/'))
+        if complete:
+            rows=artifacts(db,'answer/final/')
+            result['completion_checks']=verify_complete_final(db,rows)
+            result['routing_replay']=replay(db,rows)
         db.close()
     parent.close();atomic_json(out/'analysis.json',result)
     print(json.dumps({'final_complete':result['final_complete'],'output':str(out/'analysis.json')}))
