@@ -76,3 +76,7 @@ secrets*.json
 !/reports/v072_analysis_20260923/
 /reports/v072_analysis_20260923/*
 !/reports/v072_analysis_20260923/ANALYSIS_AND_SHUTDOWN_20260923.md
+
+!/reports/v072_final_20260924/
+/reports/v072_final_20260924/*
+!/reports/v072_final_20260924/FINAL_REPORT.md

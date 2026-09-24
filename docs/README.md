@@ -2,6 +2,8 @@
 
 优先阅读当前材料：
 
+- [v072 最终结果、方法结论与已校验本地备份](../reports/v072_final_20260924/FINAL_REPORT.md)
+- [v072 评分基础设施修复记录（英文）](V072_REFERENCE_MEMORY_REPAIR_20260924.md)
 - [v072 今日结果、暂停位置与关机备份](../reports/v072_analysis_20260923/ANALYSIS_AND_SHUTDOWN_20260923.md)
 - [v072 后续搜索、选择、终评与恢复协议（英文）](EXPERIMENT_V072_CONTINUATION.md)
 - [v072 实际启动范围、保存与恢复机制（英文）](EXPERIMENT_V072.md)
